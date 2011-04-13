@@ -39,18 +39,20 @@ class TestBoard {
     @Test
     void boardIsValidSudokuPuzzle() {
         assertTrue("board rows should be valid", allRowsAreValid(newBoard(boardString)))
-        assertFalse("board rows should be invalid", allRowsAreValid(newBoard("123456788........................................................................")))
+        assertFalse("board rows should be invalid", allRowsAreValid(
+                newBoard("123456788........................................................................")))
         assertTrue("board columns should be valid", allColumnsAreValid(newBoard(boardString)))
-        assertFalse("board columns should be invalid", allColumnsAreValid(newBoard("1........2........3........4........5........6........7........8........8........")))
+        assertFalse("board columns should be invalid", allColumnsAreValid(
+                newBoard("1........2........3........4........5........6........7........8........8........")))
     }
 
     boolean allColumnsAreValid(TreeBasedTable<Integer,Integer,List<Integer>> board) {
-        true
+        return validateMap(board.columnMap())
     }
 
-    boolean allRowsAreValid(board){
-        def valid = true
-        board.rowMap().each {row->
+    boolean validateMap(Map rowOrColumn) {
+        boolean valid = true
+        rowOrColumn.each {row->
             Multimap<Integer,Integer> rows = ArrayListMultimap.create()
             row.value.each {column->
                 if (column.value.size() == 1)
@@ -61,6 +63,10 @@ class TestBoard {
             }
         }
         return valid
+    }
+
+    boolean allRowsAreValid(board){
+        return validateMap(board.rowMap())
     }
 
     @SuppressWarnings("GroovyAssignabilityCheck")
