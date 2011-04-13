@@ -5,22 +5,6 @@ import static org.junit.Assert.*
 
 class TestBoard {
 
-    Multimap<List<Integer>, List<Integer>> regions
-
-    @Before
-    public void regions() {
-        regions = new HashMultimap<List<Integer>, List<Integer>>()
-        regions.put((0..2), (0..2))
-        regions.put((3..5), (0..2))
-        regions.put((6..8), (0..2))
-        regions.put((0..2), (3..5))
-        regions.put((3..5), (3..5))
-        regions.put((6..8), (3..5))
-        regions.put((0..2), (6..8))
-        regions.put((3..5), (6..8))
-        regions.put((6..8), (6..8))
-    }
-
     String boardString = "123.56789" +
             "234.67891" +
             "345.78912" +
@@ -107,49 +91,15 @@ class TestBoard {
     }
 
     boolean allRegionsAreValid(Board board) {
-
-        boolean valid = true
-        regions.asMap().each {entry ->
-            List<Integer> squares = []
-            entry.key.each {row ->
-                entry.value.each {columnList ->
-                    columnList.each {column ->
-                        if (board.get(row, column).size() == 1) {
-                            if (squares.contains(board.get(row, column)[0])) {
-                                valid = false
-                            }
-                            else {
-                                squares.add(board.get(row, column)[0])
-                            }
-                        }
-                    }
-                }
-            }
-        }
-        return valid
+        return board.allRegionsAreValid()
     }
 
     boolean allColumnsAreValid(Board board) {
-        return validateMap(board.columnMap())
+        return board.allColumnsAreValid()
     }
 
     boolean allRowsAreValid(Board board) {
-        return validateMap(board.rowMap())
-    }
-
-    boolean validateMap(Map<Integer, Map<Integer, List<Integer>>> rowOrColumn) {
-        boolean valid = true
-        rowOrColumn.each {row ->
-            Multimap<Integer, Integer> rows = ArrayListMultimap.create()
-            row.value.each {column ->
-                if (column.value.size() == 1)
-                    if (rows.get(row.key).contains(column.value[0])) {valid = false}
-                    else {
-                        rows.put(row.key, column.value[0])
-                    }
-            }
-        }
-        return valid
+        return board.allRowsAreValid()
     }
 
     @SuppressWarnings("GroovyAssignabilityCheck")
