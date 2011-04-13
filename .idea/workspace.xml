@@ -63,7 +63,16 @@
       <file leaf-file-name="TestBoard.groovy" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/test/unit/TestBoard.groovy">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="49" column="44" selection-start="2104" selection-end="2104" vertical-scroll-proportion="1.0035714">
+            <state line="74" column="45" selection-start="4858" selection-end="4858" vertical-scroll-proportion="2.2035713">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Preconditions.class" pinned="false" current="false" current-in-tab="false">
+        <entry file="jar://$PROJECT_DIR$/lib/guava-r08.jar!/com/google/common/base/Preconditions.class">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="22" column="24" selection-start="1219" selection-end="1219" vertical-scroll-proportion="-2.44">
               <folding />
             </state>
           </provider>
@@ -101,7 +110,7 @@
     <option name="STATE" value="0" />
   </component>
   <component name="ProjectView">
-    <navigator currentView="ProjectPane" proportions="" version="1" splitterProportion="0.5">
+    <navigator proportions="" version="1" splitterProportion="0.5">
       <flattenPackages />
       <showMembers />
       <showModules />
@@ -112,21 +121,7 @@
       <autoscrollFromSource />
       <sortByType />
     </navigator>
-    <panes>
-      <pane id="Favorites" />
-      <pane id="ProjectPane">
-        <subPane>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="sudoku" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-          </PATH>
-        </subPane>
-      </pane>
-      <pane id="PackagesPane" />
-      <pane id="Scope" />
-    </panes>
+    <panes />
   </component>
   <component name="PropertiesComponent">
     <property name="GoToFile.includeJavaFiles" value="false" />
@@ -401,9 +396,51 @@
     <option name="FILTER_TARGETS" value="false" />
   </component>
   <component name="editorHistoryManager">
+    <entry file="jar://$PROJECT_DIR$/lib/guava-r08.jar!/com/google/common/collect/TreeBasedTable.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="39" column="13" selection-start="2307" selection-end="2307" vertical-scroll-proportion="-2.44">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$PROJECT_DIR$/lib/guava-r08.jar!/com/google/common/collect/StandardTable.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="47" column="13" selection-start="2499" selection-end="2499" vertical-scroll-proportion="-2.44">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$PROJECT_DIR$/lib/guava-r08.jar!/com/google/common/collect/Maps.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="70" column="17" selection-start="4971" selection-end="4971" vertical-scroll-proportion="-2.44">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$PROJECT_DIR$/lib/guava-r08.jar!/com/google/common/collect/NaturalOrdering.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="10" column="15" selection-start="484" selection-end="484" vertical-scroll-proportion="-2.08">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$USER_HOME$/grails-1.3.7/lib/groovy-all-1.7.8.jar!/org/codehaus/groovy/runtime/metaclass/ClosureMetaClass.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="30" column="28" selection-start="1655" selection-end="1884" vertical-scroll-proportion="0.38607594">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$PROJECT_DIR$/lib/guava-r08.jar!/com/google/common/base/Preconditions.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="22" column="24" selection-start="1219" selection-end="1219" vertical-scroll-proportion="-2.44">
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/test/unit/TestBoard.groovy">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="49" column="44" selection-start="2104" selection-end="2104" vertical-scroll-proportion="1.0035714">
+        <state line="74" column="45" selection-start="4858" selection-end="4858" vertical-scroll-proportion="2.2035713">
           <folding />
         </state>
       </provider>
