@@ -31,6 +31,19 @@ class TestBoard {
             "891.34567" +
             "912.45678"
 
+    @Test(expected = RuntimeException.class)
+    void invalidBoardInputLength(){
+        newBoard("748923748923")
+    }
+
+    @Test(expected = RuntimeException.class)
+    void invalidBoardInputCharacter(){
+        newBoard("1..2..3...4..%..6...7..8..91..2..3...4..5..6...7..8..91..2..3...4..5..6...7..8..9")
+        newBoard("1..2..3...4..5..6...7..8..91..2..3...4..5..6...7..8..g1..2..3...4..5..6...7..8..9")
+        newBoard("1..2..3...4..5..6...7..8..91..2..3...4..5..6...7..8..91..2..3...4..5..&...7..8..9")
+        newBoard("l..2..3...4..5..6...7..8..91..2..3...4..5..6...7..8..91..2..3...4..5..6...7..8..9")
+    }
+
     @Test
     void createBoardFromInput() {
         Board board = newBoard(boardString)

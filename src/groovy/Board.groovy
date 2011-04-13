@@ -6,8 +6,8 @@ class Board {
     final TreeBasedTable<Integer, Integer, List<Integer>> grid
 
     @SuppressWarnings("GroovyAssignabilityCheck") Board(String board) {
-        if (board.length() != 81) {
-            throw new RuntimeException("wrong number of numbers for valid board: $board")
+        if (!(board ==~ "[/.0-9]{81}" )) {
+            throw new RuntimeException("trying to create board with invalid string: $board")
         }
         grid = TreeBasedTable.create()
         (0..8).each {row ->
