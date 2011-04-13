@@ -33,7 +33,7 @@ class TestBoard {
 
     @Test
     void createBoardFromInput() {
-        TreeBasedTable<Integer, Integer, List<Integer>> board = newBoard(boardString)
+        Board board = newBoard(boardString)
         assertNotNull(board)
         assertEquals("wrong size of board", 9, board.rowMap().size())
         board.rowMap().each {row ->
@@ -93,7 +93,7 @@ class TestBoard {
                 newBoard("............................................................123......456......789")))
     }
 
-    boolean allRegionsAreValid(TreeBasedTable<Integer, Integer, List<Integer>> board) {
+    boolean allRegionsAreValid(Board board) {
 
         boolean valid = true
         regions.asMap().each {entry ->
@@ -116,11 +116,11 @@ class TestBoard {
         return valid
     }
 
-    boolean allColumnsAreValid(TreeBasedTable<Integer, Integer, List<Integer>> board) {
+    boolean allColumnsAreValid(Board board) {
         return validateMap(board.columnMap())
     }
 
-    boolean allRowsAreValid(TreeBasedTable<Integer, Integer, List<Integer>> board) {
+    boolean allRowsAreValid(Board board) {
         return validateMap(board.rowMap())
     }
 
@@ -140,17 +140,8 @@ class TestBoard {
     }
 
     @SuppressWarnings("GroovyAssignabilityCheck")
-    TreeBasedTable<Integer, Integer, List<Integer>> newBoard(String board) {
-        assertTrue("wrong number of squares for board", board.length() == 81)
-        TreeBasedTable<Integer, Integer, List<Integer>> newBoard = TreeBasedTable.create()
-        (0..8).each {row ->
-            (0..8).each {column ->
-                newBoard.put(row, column, Lists.newArrayList(board.charAt((row * 9) + column) == "." ?
-                    (1..9) :
-                    board.charAt((row * 9) + column)))
-            }
-        }
-        return newBoard
+    Board newBoard(String board) {
+        return new Board(board)
     }
 
 }
