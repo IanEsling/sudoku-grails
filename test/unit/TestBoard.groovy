@@ -1,8 +1,25 @@
+import org.junit.Before
 import org.junit.Test
 import com.google.common.collect.*
 import static org.junit.Assert.*
 
 class TestBoard {
+
+    Multimap<List<Integer>, List<Integer>> regions
+
+    @Before
+    public void regions() {
+        regions = new HashMultimap<List<Integer>, List<Integer>>()
+        regions.put((0..2), (0..2))
+        regions.put((3..5), (0..2))
+        regions.put((6..8), (0..2))
+        regions.put((0..2), (3..5))
+        regions.put((3..5), (3..5))
+        regions.put((6..8), (3..5))
+        regions.put((0..2), (6..8))
+        regions.put((3..5), (6..8))
+        regions.put((6..8), (6..8))
+    }
 
     String boardString = "123.56789" +
             "234.67891" +
@@ -39,23 +56,23 @@ class TestBoard {
                 newBoard("1........2........3........4........5........6........7........8........8........")))
         assertFalse("board regions should be invalid", allRegionsAreValid(newBoard(boardString)))
         assertFalse("board region 1 should be invalid", allRegionsAreValid(
-                newBoard("123......456......788............................................................")))
+                newBoard("123......456......799............................................................")))
         assertFalse("board region 2 should be invalid", allRegionsAreValid(
                 newBoard("...123......456......788.........................................................")))
         assertFalse("board region 3 should be invalid", allRegionsAreValid(
-                newBoard("......123......456......788......................................................")))
+                newBoard("......123......456......778......................................................")))
         assertFalse("board region 4 should be invalid", allRegionsAreValid(
-                newBoard("...........................123......456......788.................................")))
+                newBoard("...........................123......456......688.................................")))
         assertFalse("board region 5 should be invalid", allRegionsAreValid(
-                newBoard("..............................123......456......788..............................")))
+                newBoard("..............................123......455......788..............................")))
         assertFalse("board region 6 should be invalid", allRegionsAreValid(
-                newBoard(".................................123......456......788...........................")))
+                newBoard(".................................123......446......788...........................")))
         assertFalse("board region 7 should be invalid", allRegionsAreValid(
-                newBoard("......................................................123......456......788......")))
+                newBoard("......................................................123......356......788......")))
         assertFalse("board region 8 should be invalid", allRegionsAreValid(
-                newBoard(".........................................................123......456......788...")))
+                newBoard(".........................................................122......456......788...")))
         assertFalse("board region 9 should be invalid", allRegionsAreValid(
-                newBoard("............................................................123......456......788")))
+                newBoard("............................................................113......456......788")))
         assertTrue("board region 1 should be valid", allRegionsAreValid(
                 newBoard("123......456......789............................................................")))
         assertTrue("board region 2 should be valid", allRegionsAreValid(
@@ -74,20 +91,10 @@ class TestBoard {
                 newBoard(".........................................................123......456......789...")))
         assertTrue("board region 9 should be valid", allRegionsAreValid(
                 newBoard("............................................................123......456......789")))
-
     }
 
     boolean allRegionsAreValid(TreeBasedTable<Integer, Integer, List<Integer>> board) {
-        Multimap<List<Integer>, List<Integer>> regions = new HashMultimap<List<Integer>, List<Integer>>()
-        regions.put((0..2), (0..2))
-        regions.put((3..5), (0..2))
-        regions.put((6..8), (0..2))
-        regions.put((0..2), (3..5))
-        regions.put((3..5), (3..5))
-        regions.put((6..8), (3..5))
-        regions.put((0..2), (6..8))
-        regions.put((3..5), (6..8))
-        regions.put((6..8), (6..8))
+
         boolean valid = true
         regions.asMap().each {entry ->
             List<Integer> squares = []
@@ -117,7 +124,7 @@ class TestBoard {
         return validateMap(board.rowMap())
     }
 
-    boolean validateMap(Map rowOrColumn) {
+    boolean validateMap(Map<Integer, Map<Integer, List<Integer>>> rowOrColumn) {
         boolean valid = true
         rowOrColumn.each {row ->
             Multimap<Integer, Integer> rows = ArrayListMultimap.create()
