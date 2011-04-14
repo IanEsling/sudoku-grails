@@ -70,7 +70,7 @@ class TestBoard {
 
     @Test(expected = RuntimeException.class)
     void invalidRegion(){
-        newBoard("123456789456789123799............................................................")
+        newBoard("123456789456789123791............................................................")
     }
 
     boolean allRegionsAreValid(Board board) {

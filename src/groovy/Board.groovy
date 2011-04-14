@@ -21,9 +21,9 @@ class Board {
 
         boolean valid = true
         regions.asMap().each {entry ->
-            entry.key.each {row ->
+            entry.value.each {columnList ->
             List<Integer> squares = []
-                entry.value.each {columnList ->
+                entry.key.each {row ->
                     columnList.each {column ->
                         if (grid.get(row, column).size() == 1) {
                             if (squares.contains(grid.get(row, column)[0])) {
