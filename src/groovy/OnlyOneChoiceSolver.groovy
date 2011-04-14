@@ -1,8 +1,8 @@
 class OnlyOneChoiceSolver {
 
     String solveBoard(Board board) {
-        solveRows(board.grid.rowMap())
-        solveRows(board.grid.columnMap())
+        solveLines(board.grid.rowMap())
+        solveLines(board.grid.columnMap())
         solveRegions(board)
         return board.asString()
     }
@@ -10,16 +10,16 @@ class OnlyOneChoiceSolver {
     boolean solveRegions(Board board) {
         board.regions.asMap().each {entry ->
             entry.value.each {columnList ->
-            List<Integer> squares = []
+            List<Integer> definiteNumbers = []
                 entry.key.each {row ->
                     columnList.each {column ->
                         if (board.grid.get(row, column).size() == 1) {
-                            squares.add(board.grid.get(row, column)[0])
+                            definiteNumbers.add(board.grid.get(row, column)[0])
                         }
                     }
                     columnList.each {column ->
                         if (board.grid.get(row, column).size() > 1) {
-                            board.grid.get(row, column).removeAll(squares)
+                            board.grid.get(row, column).removeAll(definiteNumbers)
                         }
                     }
                 }
@@ -28,7 +28,7 @@ class OnlyOneChoiceSolver {
         return true
     }
 
-    private boolean solveRows(Map<Integer, Map<Integer, List<Integer>>> row) {
+    private boolean solveLines(Map<Integer, Map<Integer, List<Integer>>> row) {
         row.each {rowMap ->
             List<Integer> definiteNumbers = new ArrayList<Integer>()
             rowMap.value.each {column ->

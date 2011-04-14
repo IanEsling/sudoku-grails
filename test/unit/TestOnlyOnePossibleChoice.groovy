@@ -31,11 +31,14 @@ class TestOnlyOnePossibleChoice {
     }
 
     @Test
-    void oneChoiceInRegion(){
+    void oneChoiceInRegion() {
         board = new Board("123......456......78.......2........5.................9..........................")
-                assertEquals("next number 9 not solved correctly:\n${board.toString()}",
-                        "123......456......789......2........5.................9..........................",
-                        solver.solveBoard(board))
-
+        assertEquals("next number 9 not solved correctly:\n${board.toString()}",
+                "123......456......789......2........5.................9..........................",
+                solver.solveBoard(board))
+        board = new Board("12345678945678912378912345.2........5.................9..........................")
+        assertEquals("next number 9 not solved correctly:\n${board.toString()}",
+                "1234567894567891237891234562........5.................9..........................",
+                solver.solveBoard(board))
     }
 }
