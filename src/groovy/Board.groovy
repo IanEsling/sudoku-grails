@@ -92,4 +92,26 @@ class Board {
         regions.put((3..5), (6..8))
         regions.put((6..8), (6..8))
     }
+
+    String solveNextSquare() {
+        return "..3.4.5..9876543211..9...5......................................................."
+    }
+
+    @Override
+    String toString() {
+        StringBuffer buffer = new StringBuffer()
+        grid.rowMap().each {entry ->
+            entry.value.each {column ->
+                buffer.append column.value.size() == 1 ? " " + column.value[0] + " " : " . "
+                if (column.key == 2 || column.key == 5) buffer.append " | "
+                if (column.key == 8) {
+                    buffer.append "\n"
+                }
+            }
+            if (entry.key == 2 || entry.key == 5) {
+                buffer.append "--------- + --------- + ---------\n"
+            }
+        }
+        return buffer.toString()
+    }
 }

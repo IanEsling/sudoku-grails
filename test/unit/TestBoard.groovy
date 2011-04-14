@@ -1,6 +1,4 @@
-import org.junit.Before
 import org.junit.Test
-import com.google.common.collect.*
 import static org.junit.Assert.*
 
 class TestBoard {
@@ -15,16 +13,33 @@ class TestBoard {
             "891.34567" +
             "912.45678"
 
+    @Test
+    void seeBoard(){
+        println new Board(boardString).toString()
+    }
+
     @Test(expected = RuntimeException.class)
-    void invalidBoardInputLength(){
+    void invalidBoardInputLength() {
         newBoard("748923748923")
     }
 
     @Test(expected = RuntimeException.class)
-    void invalidBoardInputCharacter(){
+    void invalidBoardInputCharacter1() {
         newBoard("1..2..3...4..%..6...7..8..91..2..3...4..5..6...7..8..91..2..3...4..5..6...7..8..9")
+    }
+
+    @Test(expected = RuntimeException.class)
+    void invalidBoardInputCharacter2() {
         newBoard("1..2..3...4..5..6...7..8..91..2..3...4..5..6...7..8..g1..2..3...4..5..6...7..8..9")
+    }
+
+    @Test(expected = RuntimeException.class)
+    void invalidBoardInputCharacter3() {
         newBoard("1..2..3...4..5..6...7..8..91..2..3...4..5..6...7..8..91..2..3...4..5..&...7..8..9")
+    }
+
+    @Test(expected = RuntimeException.class)
+    void invalidBoardInputCharacter4() {
         newBoard("l..2..3...4..5..6...7..8..91..2..3...4..5..6...7..8..91..2..3...4..5..6...7..8..9")
     }
 
@@ -106,5 +121,4 @@ class TestBoard {
     Board newBoard(String board) {
         return new Board(board)
     }
-
 }
