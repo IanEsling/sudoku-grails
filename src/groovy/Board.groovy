@@ -21,8 +21,8 @@ class Board {
 
         boolean valid = true
         regions.asMap().each {entry ->
-            List<Integer> squares = []
             entry.key.each {row ->
+            List<Integer> squares = []
                 entry.value.each {columnList ->
                     columnList.each {column ->
                         if (grid.get(row, column).size() == 1) {
@@ -77,6 +77,9 @@ class Board {
             }
         }
         createRegions()
+        if (!allColumnsAreValid() || !allRowsAreValid() || !allRegionsAreValid()) {
+            throw new RuntimeException("tried to create invalid board:\n${toString()}")
+        }
     }
 
     void createRegions() {

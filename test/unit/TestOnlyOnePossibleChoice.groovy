@@ -8,9 +8,9 @@ class TestOnlyOnePossibleChoice {
 
     @Test
     void oneChoiceInRow() {
-        board = new Board("..3.4.5...876543211..9...5.......................................................")
+        board = new Board("..3.1.4...876543211..9...5.......................................................")
         assertEquals("next number 9 not solved correctly:\n${board.toString()}",
-                "..3.4.5..9876543211..9...5.......................................................",
+                "..3.1.4..9876543211..9...5.......................................................",
                 solver.solveBoard(board))
         board = new Board("............................84756293.............................................")
         assertEquals("next number 1 not solved correctly:\n${board.toString()}",
@@ -28,5 +28,14 @@ class TestOnlyOnePossibleChoice {
         assertEquals("next number 9 not solved correctly:\n${board.toString()}",
                 "........1........2........3........4........5........6........7........8........9",
                 solver.solveBoard(board))
+    }
+
+    @Test
+    void oneChoiceInRegion(){
+        board = new Board("123......456......78.......2........5.................9..........................")
+                assertEquals("next number 9 not solved correctly:\n${board.toString()}",
+                        "123......456......789......2........5.................9..........................",
+                        solver.solveBoard(board))
+
     }
 }
