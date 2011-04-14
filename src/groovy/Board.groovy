@@ -63,8 +63,7 @@ class Board {
         return valid
     }
 
-    @SuppressWarnings("GroovyAssignabilityCheck")
-    Board(String board) {
+    @SuppressWarnings("GroovyAssignabilityCheck") Board(String board) {
         if (!(board ==~ "[/.0-9]{81}")) {
             throw new RuntimeException("trying to create board with invalid string: $board")
         }
@@ -74,7 +73,7 @@ class Board {
                 grid.put row, column,
                         Lists.newArrayList(board.charAt((row * 9) + column) == "." ?
                             (1..9) :
-                            board.charAt((row * 9) + column))
+                            Integer.valueOf(board.charAt((row * 9) + column).toString()))
             }
         }
         createRegions()
@@ -93,10 +92,6 @@ class Board {
         regions.put((6..8), (6..8))
     }
 
-    String solveNextSquare() {
-        return "..3.4.5..9876543211..9...5......................................................."
-    }
-
     @Override
     String toString() {
         StringBuffer buffer = new StringBuffer()
@@ -110,6 +105,16 @@ class Board {
             }
             if (entry.key == 2 || entry.key == 5) {
                 buffer.append "--------- + --------- + ---------\n"
+            }
+        }
+        return buffer.toString()
+    }
+
+    String asString() {
+        StringBuffer buffer = new StringBuffer()
+        grid.rowMap().each {entry ->
+            entry.value.each {column ->
+                buffer.append column.value.size() == 1 ? column.value[0] : "."
             }
         }
         return buffer.toString()
