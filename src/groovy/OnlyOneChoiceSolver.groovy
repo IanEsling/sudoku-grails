@@ -1,14 +1,6 @@
 class OnlyOneChoiceSolver {
 
-    @SuppressWarnings("GroovyAssignabilityCheck")
-    String solveBoard(Board board) {
-        solveUnits(board.rows)
-        solveUnits(board.columns)
-        solveUnits(board.regions)
-        return board.asString()
-    }
-
-    private void solveUnits(Set<Unit> units) {
+    void solveUnits(Set<Unit> units) {
         units.each {unit->
             solveUnit unit
         }
