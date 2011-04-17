@@ -8,7 +8,18 @@ class TestSolverReport {
     OnlyOneChoiceSolver solver = new OnlyOneChoiceSolver()
 
     @Test
-    void reportOnlyOneChoiceInColumn() {
+    void reportIsNullIfNothingSolved() {
+        board = new Board("..3.1.4...876543211..9...5.......................................................")
+        solver.solveUnits board.rows
+        assertEquals("solver report for row incorrect",
+                "2,1 must be a 9 because it's the only choice for this row",
+                solver.report.toString())
+        solver.solveUnits board.columns
+        assertNull("solver report should be null when not solving anything", solver.report)
+    }
+
+    @Test
+    void reportOnlyOneChoiceInUnit() {
         board = new Board("123456...456......78.12....2........5.................9..........................")
         assertEquals("solved region before solving", 0, UnitTestUtils.solvedUnits(board.regions))
         solver.solveUnits board.regions
