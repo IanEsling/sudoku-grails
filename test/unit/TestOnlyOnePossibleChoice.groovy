@@ -47,4 +47,28 @@ class TestOnlyOnePossibleChoice {
                 "1234567894567891237891234562........5.................9..........................",
                 board.asString())
     }
+
+    @Test
+    void onlySolveFirstProblem() {
+        board = new Board("123456...456789...78.12....2........5.................9..........................")
+        assertEquals("solved region before solving", 0, solvedUnits(board.regions))
+        solver.solveUnits board.regions
+        assertEquals("only 1 region not solved correctly:\n${board.toString()}", 1, solvedUnits(board.regions))
+        board = new Board("1.......22.......33.......44.......55.......66.......77.......88.......9.........")
+        assertEquals("solved column before solving", 0, solvedUnits(board.columns))
+        solver.solveUnits board.columns
+        assertEquals("only 1 column not solved correctly:\n${board.toString()}", 1, solvedUnits(board.columns))
+        board = new Board("12345678.78912345................................................................")
+        assertEquals("solved row before solving", 0, solvedUnits(board.rows))
+        solver.solveUnits board.rows
+        assertEquals("only 1 row not solved correctly:\n${board.toString()}", 1, solvedUnits(board.rows))
+    }
+
+    Integer solvedUnits(Set<Unit> units) {
+        int solved = 0
+        units.each {unit->
+            if (unit.solvedNumbers().size() == 9) solved++
+        }
+        return solved
+    }
 }

@@ -1,7 +1,7 @@
 import com.google.common.base.Predicate
 import com.google.common.collect.Collections2
 
-class Region implements Unit {
+class Region extends AbstractUnit {
 
     Set<Cell> cells
 

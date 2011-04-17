@@ -2,8 +2,6 @@ import com.google.common.collect.*
 
 class Board {
 
-    final TreeBasedTable<Integer, Integer, List<Integer>> grid
-
     final TreeSet<Cell> cells
     final Set<Column> columns
     final Set<Row> rows
@@ -17,9 +15,9 @@ class Board {
         (1..9).each {row ->
             (1..9).each {column ->
                 cells.add new Cell(row, column,
-                        Lists.newArrayList(board.charAt(((row - 1) * 9) + (column - 1)) == "." ?
-                            (1..9) :
-                            Integer.valueOf(board.charAt(((row - 1) * 9) + (column - 1)).toString())))
+                        board.charAt(((row - 1) * 9) + (column - 1)) == "." ?
+                            Lists.newArrayList(1..9) :
+                            Lists.newArrayList(Integer.valueOf(board.charAt(((row - 1) * 9) + (column - 1)).toString())))
             }
         }
         rows = Sets.newHashSet()
@@ -35,6 +33,10 @@ class Board {
             }
         }
 
+        validateBoard()
+    }
+
+    private def validateBoard() {
         if (!allColumnsAreValid()
                 || !allRowsAreValid()
                 || rows.size() != 9
@@ -42,22 +44,11 @@ class Board {
                 || regions.size() != 9
                 || !allRegionsAreValid()
         ) {
-            throw new RuntimeException("""tried to create invalid board:\n
-            rows:${rows}\n
-            columns:${columns}\n
-            ${toString()}""")
+            throw new RuntimeException("tried to create invalid board:\n" +
+                    "rows:${rows}\n" +
+                    "columns:${columns}\n" +
+                    "${toString()}")
         }
-    }
-
-    def get = {row, column ->
-        grid.get(row, column)
-    }
-    def rowMap = {
-        grid.rowMap()
-    }
-
-    def columnMap = {
-        grid.columnMap()
     }
 
     boolean allRegionsAreValid() {

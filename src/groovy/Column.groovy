@@ -1,12 +1,12 @@
-import com.google.common.collect.Collections2
 import com.google.common.base.Predicate
+import com.google.common.collect.Collections2
 
-class Column implements Unit {
+class Column extends AbstractUnit {
 
     Set<Cell> cells
 
     Column(Integer column, Collection<Cell> cells) {
-        this.cells = Collections2.filter(cells, new Predicate<Cell>(){
+        this.cells = Collections2.filter(cells, new Predicate<Cell>() {
             boolean apply(Cell cell) {
                 return cell.column == column
             }
