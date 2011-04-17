@@ -4,6 +4,7 @@ import com.google.common.collect.Collections2
 class Column extends AbstractUnit {
 
     Set<Cell> cells
+    String type = "column"
 
     Column(Integer column, Collection<Cell> cells) {
         this.cells = Collections2.filter(cells, new Predicate<Cell>() {
