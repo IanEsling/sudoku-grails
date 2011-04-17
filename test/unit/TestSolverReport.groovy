@@ -5,7 +5,7 @@ import static org.junit.Assert.assertNull
 class TestSolverReport {
 
     Board board
-    OnlyOneChoiceSolver solver = new OnlyOneChoiceSolver()
+    BasicSolver solver = new BasicSolver()
 
     @Test
     void reportIsNullIfNothingSolved() {

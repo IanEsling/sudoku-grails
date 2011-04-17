@@ -1,10 +1,12 @@
 import org.junit.Test
 import static org.junit.Assert.assertEquals
+import static org.junit.Assert.assertNotNull
+import static org.junit.Assert.assertNull
 
-@SuppressWarnings("GroovyAssignabilityCheck") class TestOnlyOnePossibleChoice {
+@SuppressWarnings("GroovyAssignabilityCheck") class TestBasicSolver {
 
     Board board
-    OnlyOneChoiceSolver solver = new OnlyOneChoiceSolver()
+    BasicSolver solver = new BasicSolver()
 
     @Test
     void oneChoiceInRow() {
@@ -62,5 +64,22 @@ import static org.junit.Assert.assertEquals
         assertEquals("solved row before solving", 0, UnitTestUtils.solvedUnits(board.rows))
         solver.solveUnits board.rows
         assertEquals("only 1 row not solved correctly:\n${board.toString()}", 1, UnitTestUtils.solvedUnits(board.rows))
+    }
+
+    @Test
+    void solveRows() {
+        board = new Board("12.3..5.4.4........78.....9.........3.9......4...................7...............")
+        solver.solveForBoard(board)
+        assertNotNull("no report for solver 1:\n${board.toString()}", solver.report)
+        solver.solveForBoard(board)
+        assertNotNull("no report for solver 2:\n${board.toString()}", solver.report)
+        solver.solveForBoard(board)
+        assertNotNull("no report for solver 3:\n${board.toString()}", solver.report)
+        solver.solveForBoard(board)
+        assertNotNull("no report for solver 4:\n${board.toString()}", solver.report)
+        solver.solveForBoard(board)
+        assertNull("report for solver 5\n${board.toString()}", solver.report)
+        println board.toString()
+        println solver.report
     }
 }

@@ -13,4 +13,9 @@ class Region extends AbstractUnit {
             }
         })
     }
+
+    @Override
+    String toString() {
+        return "region $cells"
+    }
 }

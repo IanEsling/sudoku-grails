@@ -1,8 +1,17 @@
-class OnlyOneChoiceSolver {
+class BasicSolver {
 
     GString report
 
-    void solveUnits(Set<Unit> units) {
+    boolean solveForBoard(Board board) {
+        if (!solveUnits(board.rows)) {
+            if (!solveUnits(board.columns)) {
+                return solveUnits(board.regions)
+            }
+        }
+        return true
+    }
+
+    boolean solveUnits(Set<Unit> units) {
         units.any {unit ->
             solveUnit unit
         }

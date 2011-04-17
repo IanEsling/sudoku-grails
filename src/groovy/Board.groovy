@@ -108,4 +108,15 @@ class Board {
         return buffer.toString()
     }
 
+    Row getRow(Integer rowIndex) {
+        rows.find {boardRow->
+            boardRow.row == rowIndex
+        }
+    }
+
+    Column getColumn(Integer columnIndex) {
+        columns.find {boardColumn->
+            boardColumn.column == columnIndex
+        }
+    }
 }
