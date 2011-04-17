@@ -2,3 +2,4 @@
 .project
 out
 .idea/workspace.xml
+target/*

@@ -1,47 +1,31 @@
 class OnlyOneChoiceSolver {
 
+    @SuppressWarnings("GroovyAssignabilityCheck")
     String solveBoard(Board board) {
-        solveLines(board.grid.rowMap())
-        solveLines(board.grid.columnMap())
-        solveRegions(board)
+        solveUnits(board.rows)
+        solveUnits(board.columns)
+        solveUnits(board.regions)
         return board.asString()
     }
 
-    boolean solveRegions(Board board) {
-        board.regions.asMap().each {entry ->
-            entry.value.each {columnList ->
-            List<Integer> definiteNumbers = []
-                entry.key.each {row ->
-                    columnList.each {column ->
-                        if (board.grid.get(row, column).size() == 1) {
-                            definiteNumbers.add(board.grid.get(row, column)[0])
-                        }
-                    }
-                    columnList.each {column ->
-                        if (board.grid.get(row, column).size() > 1) {
-                            board.grid.get(row, column).removeAll(definiteNumbers)
-                        }
-                    }
-                }
-            }
+    private void solveUnits(Set<Unit> units) {
+        units.each {unit->
+            solveUnit unit
         }
-        return true
     }
 
-    private boolean solveLines(Map<Integer, Map<Integer, List<Integer>>> row) {
-        row.each {rowMap ->
-            List<Integer> definiteNumbers = new ArrayList<Integer>()
-            rowMap.value.each {column ->
-                if (column.value.size() == 1) {
-                    definiteNumbers.add(column.value[0])
-                }
-            }
-            rowMap.value.each {column ->
-                if (column.value.size() > 1) {
-                    column.value.removeAll(definiteNumbers)
-                }
+    private void solveUnit(Unit unit) {
+        List<Integer> definiteNumbers = new ArrayList<Integer>()
+
+        unit.cells.each {cell ->
+            if (cell.values.size() == 1) {
+                definiteNumbers.add(cell.values[0])
             }
         }
-        return true
+        unit.cells.each {cell->
+            if (cell.values.size() > 1) {
+                cell.values.removeAll(definiteNumbers)
+            }
+        }
     }
 }

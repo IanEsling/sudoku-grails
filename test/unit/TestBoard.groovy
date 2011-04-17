@@ -47,15 +47,15 @@ class TestBoard {
     void createBoardFromInput() {
         Board board = newBoard(boardString)
         assertNotNull(board)
-        assertEquals("wrong size of board", 9, board.rowMap().size())
-        board.rowMap().each {row ->
-            row.value.each {column ->
-                if (column.key == 3) {assertEquals("wrong numbers in column 3: $column", 9, column.value.size())}
-                else {
-                    assertEquals("wrong number not in column 3: $column", 1, column.value.size())
-                }
-            }
-        }
+        assertEquals("wrong size of board", 81, board.cells.size())
+//        board.rowMap().each {row ->
+//            row.value.each {column ->
+//                if (column.key == 3) {assertEquals("wrong numbers in column 3: $column", 9, column.value.size())}
+//                else {
+//                    assertEquals("wrong number not in column 3: $column", 1, column.value.size())
+//                }
+//            }
+//        }
     }
 
     @Test(expected = RuntimeException.class)
@@ -71,18 +71,6 @@ class TestBoard {
     @Test(expected = RuntimeException.class)
     void invalidRegion(){
         newBoard("123456789456789123791............................................................")
-    }
-
-    boolean allRegionsAreValid(Board board) {
-        return board.allRegionsAreValid()
-    }
-
-    boolean allColumnsAreValid(Board board) {
-        return board.allColumnsAreValid()
-    }
-
-    boolean allRowsAreValid(Board board) {
-        return board.allRowsAreValid()
     }
 
     @SuppressWarnings("GroovyAssignabilityCheck")
