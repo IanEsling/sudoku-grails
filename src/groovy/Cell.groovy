@@ -14,7 +14,7 @@ class Cell implements Comparable<Cell> {
 
     void remove(Unit unit) {
         if (unit.solvedNumbers().intersect(values).size() > 0) {
-            report << "$row,$column cannot be a ${makePresentable(unit.solvedNumbers().intersect(values))}" +
+            report << "$row,$column ${values.toListString()} cannot be a ${makePresentable(unit.solvedNumbers().intersect(values))}" +
                     "in ${unit.toString()}"
             values.removeAll unit.solvedNumbers()
         }

@@ -1,7 +1,9 @@
+import com.google.common.collect.Lists
+
 class OnlyPossibleInUnitSolver {
 
     BasicSolver basicSolver = new BasicSolver()
-    GString report
+    List<String> report
 
     boolean solveForBoard(Board board) {
         if (!basicSolver.solveForBoard(board)) {
@@ -23,22 +25,25 @@ class OnlyPossibleInUnitSolver {
     }
 
     private boolean solveUnit(Unit unit) {
-        report = null
+        report = Lists.newArrayList()
         boolean solved = false
         unit.possibleNumbers().each {number ->
-            Integer total = 0
-            unit.unsolvedCells.each {cell ->
-                if (cell.values.contains(number)) {
-                    total++;
+            if (!solved) {
+
+                Integer total = 0
+                unit.unsolvedCells.each {cell ->
+                    if (cell.values.contains(number)) {
+                        total++;
+                    }
                 }
-            }
-            if (total == 1) {
-                Cell cell = unit.unsolvedCells.find {cell ->
-                    cell.values.contains(number)
+                if (total == 1) {
+                    Cell cell = unit.unsolvedCells.find {cell ->
+                        cell.values.contains(number)
+                    }
+                    cell.values.retainAll([number])
+                    solved = true
+                    report << "${cell.row},${cell.column} is the only possible in its ${unit.type} to be $number"
                 }
-                cell.values.retainAll([number])
-                solved = true
-                report = "${cell.row},${cell.column} is the only possible in its ${unit.type} to be $number"
             }
         }
         return solved

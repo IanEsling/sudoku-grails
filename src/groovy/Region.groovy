@@ -5,17 +5,19 @@ class Region extends AbstractUnit {
 
     Set<Cell> cells
     String type = "region"
+    int regionNumber
 
-    Region(Collection<Integer> columns, Collection<Integer> rows, Collection<Cell> cells) {
+    Region(Collection<Integer> columns, Collection<Integer> rows, Collection<Cell> cells, int regionNumber) {
         this.cells = Collections2.filter(cells, new Predicate<Cell>() {
             boolean apply(Cell cell) {
                 return columns.contains(cell.column) && rows.contains(cell.row)
             }
         })
+        this.regionNumber = regionNumber
     }
 
     @Override
     String toString() {
-        return "region $cells"
+        return "Region $regionNumber"
     }
 }

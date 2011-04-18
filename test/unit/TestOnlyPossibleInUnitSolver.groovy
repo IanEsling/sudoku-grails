@@ -13,7 +13,9 @@ class TestOnlyPossibleInUnitSolver {
         assertEquals(4, board.getColumn(2).solvedNumbers().size())
         while (solver.solveForBoard(board)) {
             assertNotNull("no report for only possible in unit solver", solver.report)
-            println solver.report
+            solver.report.each {
+                println it
+            }
             println board.asString()
             println board.toString()
         }
@@ -21,7 +23,9 @@ class TestOnlyPossibleInUnitSolver {
         assertEquals(9, board.getColumn(2).solvedNumbers().size())
         while (testee.solveForBoard(board)) {
             assertNotNull("no report for only possible in unit solver", testee.report)
-            println testee.report
+            testee.report.each {
+                println it
+            }
             println board.asString()
             println board.toString()
         }

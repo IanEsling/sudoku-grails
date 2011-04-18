@@ -18,6 +18,6 @@ class Column extends AbstractUnit {
 
     @Override
     String toString() {
-        return "column $column"
+        return "Column $column"
     }
 }

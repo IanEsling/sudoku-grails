@@ -1,11 +1,13 @@
+import com.google.common.collect.Lists
+
 class BasicSolver {
 
-    GString report
+    List<String> report
 
     boolean solveForBoard(Board board) {
-        if (!solveUnits(board.rows)) {
+        if (!solveUnits(board.regions)) {
             if (!solveUnits(board.columns)) {
-                return solveUnits(board.regions)
+                return solveUnits(board.rows)
             }
         }
         return true
@@ -18,16 +20,15 @@ class BasicSolver {
     }
 
     private boolean solveUnit(Unit unit) {
-        report = null
+        report = Lists.newArrayList()
         boolean solved = false
         Set<Integer> definiteNumbers = unit.solvedNumbers()
         unit.cells.each {cell ->
             if (!solved && cell.values.size() > 1) {
-                cell.values.removeAll(definiteNumbers)
+                cell.remove unit
                 if (cell.values.size() == 1) {
                     solved = true
-                    report = "${cell.row},${cell.column} must be a ${cell.values[0]} because it's the only choice for" +
-                            " this ${unit.type}"
+                    report = cell.report
                 }
             }
         }

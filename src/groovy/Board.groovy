@@ -27,9 +27,11 @@ class Board {
             columns << new Column(it, cells)
         }
         regions = Sets.newHashSet()
+        int i = 1
         [(1..3), (4..6), (7..9)].each {rowList ->
             [(1..3), (4..6), (7..9)].each {columnList ->
-                regions << new Region(rowList, columnList, cells)
+                regions << new Region(rowList, columnList, cells, i)
+                i++
             }
         }
 
