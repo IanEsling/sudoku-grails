@@ -1,13 +1,35 @@
+import com.google.common.collect.Lists
 
 class Cell implements Comparable<Cell> {
 
     final Integer row, column
     final List<Integer> values
+    List<String> report = Lists.newArrayList()
 
-    Cell(Integer row, Integer column, List<Integer> values){
+    Cell(Integer row, Integer column, List<Integer> values) {
         this.row = row
         this.column = column
-        this.values = values
+        this.values = new ArrayList<Integer>(values)
+    }
+
+    void remove(Unit unit) {
+        if (unit.solvedNumbers().intersect(values).size() > 0) {
+            report << "$row,$column cannot be a ${makePresentable(unit.solvedNumbers().intersect(values))}" +
+                    "in ${unit.toString()}"
+            values.removeAll unit.solvedNumbers()
+        }
+    }
+
+    String makePresentable(Collection<Integer> presentMe) {
+        StringBuilder builder = new StringBuilder()
+        presentMe.eachWithIndex {number, index ->
+            builder.append(number)
+            builder.append(index == presentMe.size() - 1 ? "" :
+                (index == presentMe.size() - 2 ? " or " : ", "))
+        }
+        builder.append " because "
+        builder.append presentMe.size() == 1 ? "it is " : "they are "
+        return builder.toString()
     }
 
     @Override

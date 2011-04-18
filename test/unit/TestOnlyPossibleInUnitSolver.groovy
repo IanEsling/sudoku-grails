@@ -12,6 +12,10 @@ class TestOnlyPossibleInUnitSolver {
         BasicSolver solver = new BasicSolver()
         assertEquals(4, board.getColumn(2).solvedNumbers().size())
         while (solver.solveForBoard(board)) {
+            assertNotNull("no report for only possible in unit solver", solver.report)
+            println solver.report
+            println board.asString()
+            println board.toString()
         }
         println board.toString()
         assertEquals(9, board.getColumn(2).solvedNumbers().size())
