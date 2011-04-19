@@ -9,8 +9,8 @@ class TestNakedPairsSolver {
     NakedPairsSolver testee = new NakedPairsSolver()
 
 //    .   3   .   |   .   .   .   |   .   .   .
-//    4   5   .   |   1   9   8   |   .   6   .
-//    .   .   .   |   .   3   .   |   4   8   1
+//    4   5 [2,7] |   1   9   8   |   .   6   .
+//    . [2,7] .   |   .   3   .   |   4   8   1
 //    ------------|---------------|------------
 //    5   1   .   |   .   .   .   |   .   .   .
 //    .   9   .   |   .   .   .   |   .   .   .
@@ -27,7 +27,10 @@ class TestNakedPairsSolver {
             fail("solver solved something: ${solver.report}\n${board.toString()}")
         }
         assertTrue("naked pairs didn't solve anything: \n${board.toString()}", testee.solveForBoard(board))
-        assertEquals("naked pairs didn't solve anything in row 2", 5, board.getRow(3).solvedNumbers().size())
+        assertEquals("naked pairs didn't solve anything in row 3", 5, board.getRow(3).solvedNumbers().size())
+        testee.report.each {
+            println it
+        }
         println board.toString()
     }
 
@@ -51,6 +54,9 @@ class TestNakedPairsSolver {
         }
         assertTrue("naked pairs didn't solve anything", testee.solveForBoard(board))
         assertEquals("naked pairs didn't solve anything in row 2", 3, board.getColumn(2).solvedNumbers().size())
+        testee.report.each {
+            println it
+        }
         println board.toString()
     }
 //    1   2   3   |   5   .   7   |   .   .   .
@@ -74,6 +80,9 @@ class TestNakedPairsSolver {
         }
         assertTrue("naked pairs didn't solve anything", testee.solveForBoard(board))
         assertEquals("naked pairs didn't solve anything in row 2", 3, board.getRow(2).solvedNumbers().size())
+        testee.report.each {
+            println it
+        }
         println board.toString()
     }
 }
