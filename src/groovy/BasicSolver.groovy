@@ -22,7 +22,6 @@ class BasicSolver {
     private boolean solveUnit(Unit unit) {
         report = Lists.newArrayList()
         boolean solved = false
-        Set<Integer> definiteNumbers = unit.solvedNumbers()
         unit.cells.each {cell ->
             if (!solved && cell.values.size() > 1) {
                 cell.remove unit

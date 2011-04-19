@@ -29,5 +29,9 @@ class TestOnlyPossibleInUnitSolver {
             println board.asString()
             println board.toString()
         }
+        (1..9).each {
+            assertEquals("column $it not solved: ${board.asString()}", 9, board.getColumn(it).solvedNumbers().size())
+            assertEquals("row $it not solved: ${board.asString()}", 9, board.getRow(it).solvedNumbers().size())
+        }
     }
 }
