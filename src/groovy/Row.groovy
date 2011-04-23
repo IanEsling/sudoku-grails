@@ -1,7 +1,7 @@
 import com.google.common.base.Predicate
 import com.google.common.collect.Collections2
 
-class Row extends AbstractUnit{
+class Row extends AbstractUnit implements Comparable<Row> {
 
     Integer row
     Set<Cell> cells
@@ -9,15 +9,19 @@ class Row extends AbstractUnit{
 
     Row(Integer row, Collection<Cell> cells) {
         this.row = row
-        this.cells = Collections2.filter(cells, new Predicate<Cell>(){
+        this.cells = new TreeSet<Cell>(Collections2.filter(cells, new Predicate<Cell>(){
             boolean apply(Cell cell) {
                 return cell.row == row
             }
-        })
+        }))
     }
 
     @Override
     String toString() {
         return "Row $row"
+    }
+
+    int compareTo(Row t) {
+        return this.row.compareTo(t.row)
     }
 }

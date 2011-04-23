@@ -1,4 +1,5 @@
-import com.google.common.collect.*
+import com.google.common.collect.Lists
+import com.google.common.collect.Sets
 
 class Board {
 
@@ -20,13 +21,13 @@ class Board {
                             Lists.newArrayList(Integer.valueOf(board.charAt(((row - 1) * 9) + (column - 1)).toString())))
             }
         }
-        rows = Sets.newHashSet()
-        columns = Sets.newHashSet()
+        rows = Sets.newTreeSet()
+        columns = Sets.newTreeSet()
         (1..9).each {
             rows << new Row(it, cells)
             columns << new Column(it, cells)
         }
-        regions = Sets.newHashSet()
+        regions = Sets.newTreeSet()
         int i = 1
         [(1..3), (4..6), (7..9)].each {rowList ->
             [(1..3), (4..6), (7..9)].each {columnList ->
@@ -54,7 +55,7 @@ class Board {
     }
 
     boolean allRegionsAreValid() {
-        regions.every {region->
+        regions.every {region ->
             unitCellsAreValid region
         }
     }
@@ -111,14 +112,70 @@ class Board {
     }
 
     Row getRow(Integer rowIndex) {
-        rows.find {boardRow->
+        rows.find {boardRow ->
             boardRow.row == rowIndex
         }
     }
 
     Column getColumn(Integer columnIndex) {
-        columns.find {boardColumn->
+        columns.find {boardColumn ->
             boardColumn.column == columnIndex
         }
+    }
+
+    String toStringForFailedBoard() {
+        StringBuffer buffer = new StringBuffer()
+        Map<Cell, List<Integer>> cellValues = new HashMap<Cell, List<Integer>>()
+        cells.each {cell ->
+            List<Integer> values = new ArrayList<Integer>([0, 0, 0, 0, 0, 0, 0, 0, 0])
+            cell.values.each {
+                values.remove(it - 1)
+                values.add it - 1, it
+            }
+            cellValues.put cell, values
+        }
+        rows.each {row ->
+            if (row.row == 4 || row.row == 7) {
+                buffer.append "---------------------------------- + ----------------------------------- + ------------------------------------\n"
+            } else {
+                buffer.append "---------   ---------   ---------  |  ---------   ---------   ---------  |  ---------   ---------   ---------\n"
+            }
+
+            row.cells.each {cell ->
+                (0..2).each {
+                    buffer.append cellValues[cell][it] == 0 ? " . " : " " + cellValues[cell][it] + " "
+                }
+                if (cell.column == 3 || cell.column == 6) {
+                    buffer.append "| | |"
+                } else {
+                    buffer.append "| |"
+                }
+
+            }
+            buffer.append "\n"
+            row.cells.each {cell ->
+                (3..5).each {
+                    buffer.append cellValues[cell][it] == 0 ? " . " : " " + cellValues[cell][it] + " "
+                }
+                if (cell.column == 3 || cell.column == 6) {
+                    buffer.append "| | |"
+                } else {
+                    buffer.append "| |"
+                }
+            }
+            buffer.append "\n"
+            row.cells.each {cell ->
+                (6..8).each {
+                    buffer.append cellValues[cell][it] == 0 ? " . " : " " + cellValues[cell][it] + " "
+                }
+                if (cell.column == 3 || cell.column == 6) {
+                    buffer.append "| | |"
+                } else {
+                    buffer.append "| |"
+                }
+            }
+            buffer.append "\n"
+        }
+        return buffer.toString()
     }
 }

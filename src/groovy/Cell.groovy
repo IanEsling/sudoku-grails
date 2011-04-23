@@ -43,6 +43,4 @@ class Cell implements Comparable<Cell> {
     int compareTo(Cell cell) {
         return this.row == cell.row ? this.column - cell.column : this.row - cell.row
     }
-
-
 }

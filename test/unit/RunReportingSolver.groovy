@@ -1,15 +1,17 @@
 import org.junit.Test
 import static org.junit.Assert.assertEquals
 import static org.junit.Assert.assertNotNull
+import static org.junit.Assert.assertTrue
 
 class RunReportingSolver {
 
-    OnlyPossibleInUnitSolver testee = new OnlyPossibleInUnitSolver()
-
     @Test
-    void onlyPossibleInUnitReport() {
-        Board board = new Board(".53...79...97534..1.......2.9..8..1....9.7....8..3..7.5.......3..76412...61...94.")
+    void runReportingSolver() {
+        Board board = new Board("4.....8.5.3..........7......2.....6.....8.4......1.......6.3.7.5..2.....1.4......")
         ReportingSolver reportingSolver = new ReportingSolver()
-        reportingSolver.solve board
+        println board.toString()
+        if (!reportingSolver.solve(board)) {
+            println "failed to solve board: \n${board.toStringForFailedBoard()}"
+        }
     }
 }

@@ -1,7 +1,7 @@
 import com.google.common.base.Predicate
 import com.google.common.collect.Collections2
 
-class Region extends AbstractUnit {
+class Region extends AbstractUnit implements Comparable<Region> {
 
     Set<Cell> cells
     String type = "region"
@@ -20,4 +20,10 @@ class Region extends AbstractUnit {
     String toString() {
         return "Region $regionNumber"
     }
+
+    int compareTo(Region t) {
+        return this.regionNumber.compareTo(t.regionNumber)
+    }
+
+
 }
