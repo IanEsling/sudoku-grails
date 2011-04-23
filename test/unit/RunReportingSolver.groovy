@@ -1,13 +1,10 @@
 import org.junit.Test
-import static org.junit.Assert.assertEquals
-import static org.junit.Assert.assertNotNull
-import static org.junit.Assert.assertTrue
 
 class RunReportingSolver {
 
     @Test
     void runReportingSolver() {
-        Board board = new Board("4.....8.5.3..........7......2.....6.....8.4......1.......6.3.7.5..2.....1.4......")
+        Board board = new Board("3..2........1.7...7.6.3.5...7...9.8.9...2...4.1.8...5...9.4.3.1...7.2........8..6")
         ReportingSolver reportingSolver = new ReportingSolver()
         println board.toString()
         if (!reportingSolver.solve(board)) {

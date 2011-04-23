@@ -111,6 +111,12 @@ class Board {
         return buffer.toString()
     }
 
+    Cell getCell(Integer row, Integer column){
+        cells.find {cell->
+            cell.row == row && cell.column == column
+        }
+    }
+
     Row getRow(Integer rowIndex) {
         rows.find {boardRow ->
             boardRow.row == rowIndex
