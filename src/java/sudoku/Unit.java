@@ -1,3 +1,5 @@
+package sudoku;
+
 import java.util.Set;
 
 public interface Unit {

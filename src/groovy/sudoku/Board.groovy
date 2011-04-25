@@ -1,3 +1,5 @@
+package sudoku
+
 import com.google.common.collect.Lists
 import com.google.common.collect.Sets
 

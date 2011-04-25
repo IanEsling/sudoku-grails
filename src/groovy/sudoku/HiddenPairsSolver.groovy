@@ -1,3 +1,5 @@
+package sudoku
+
 class HiddenPairsSolver {
 
     Board board

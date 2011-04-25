@@ -1,3 +1,9 @@
+import sudoku.HiddenPairsSolver
+import sudoku.BasicSolver
+import sudoku.NakedPairsSolver
+import sudoku.OnlyPossibleInUnitSolver
+import sudoku.Board
+
 class ReportingSolver {
 
     BasicSolver basicSolver = new BasicSolver()

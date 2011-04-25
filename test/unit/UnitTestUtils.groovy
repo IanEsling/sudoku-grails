@@ -1,4 +1,4 @@
-
+import sudoku.Unit
 
 class UnitTestUtils {
 

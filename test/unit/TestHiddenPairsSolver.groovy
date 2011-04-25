@@ -1,5 +1,8 @@
 import org.junit.Test
 import static org.junit.Assert.assertTrue
+import sudoku.Board
+import sudoku.HiddenPairsSolver
+import sudoku.NakedPairsSolver
 
 class TestHiddenPairsSolver {
 

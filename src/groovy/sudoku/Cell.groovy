@@ -1,3 +1,5 @@
+package sudoku
+
 import com.google.common.collect.Lists
 
 class Cell implements Comparable<Cell> {
@@ -40,7 +42,7 @@ class Cell implements Comparable<Cell> {
 
     @Override
     String toString() {
-        return "Cell($row,$column)"
+        return "sudoku.Cell($row,$column)"
     }
 
     int compareTo(Cell cell) {

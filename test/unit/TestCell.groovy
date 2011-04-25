@@ -1,6 +1,8 @@
 import com.google.common.collect.Sets
 import org.junit.Test
 import static org.junit.Assert.assertEquals
+import sudoku.Unit
+import sudoku.Cell
 
 class TestCell {
 

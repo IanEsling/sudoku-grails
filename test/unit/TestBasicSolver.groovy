@@ -1,6 +1,8 @@
 import org.junit.Test
 import static org.junit.Assert.assertEquals
 import static org.junit.Assert.assertNotNull
+import sudoku.Board
+import sudoku.BasicSolver
 
 @SuppressWarnings("GroovyAssignabilityCheck") class TestBasicSolver {
 

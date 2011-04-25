@@ -1,3 +1,5 @@
+package sudoku
+
 import com.google.common.base.Predicate
 import com.google.common.collect.Collections2
 
@@ -18,7 +20,7 @@ class Row extends AbstractUnit implements Comparable<Row> {
 
     @Override
     String toString() {
-        return "Row $row"
+        return "sudoku.Row $row"
     }
 
     int compareTo(Row t) {
