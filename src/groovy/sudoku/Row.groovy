@@ -20,7 +20,7 @@ class Row extends AbstractUnit implements Comparable<Row> {
 
     @Override
     String toString() {
-        return "sudoku.Row $row"
+        return "Row $row"
     }
 
     int compareTo(Row t) {

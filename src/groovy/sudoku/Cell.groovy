@@ -42,7 +42,7 @@ class Cell implements Comparable<Cell> {
 
     @Override
     String toString() {
-        return "sudoku.Cell($row,$column)"
+        return "Cell($row,$column)"
     }
 
     int compareTo(Cell cell) {

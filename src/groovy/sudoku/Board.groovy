@@ -11,7 +11,7 @@ class Board {
     final Set<Region> regions
 
     Board(String board) {
-        if (!(board ==~ "[/.0-9]{81}")) {
+        if (!(board ==~ "[/.1-9]{81}")) {
             throw new RuntimeException("trying to create board with invalid string: $board")
         }
         cells = Sets.newTreeSet()

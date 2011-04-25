@@ -1,8 +1,4 @@
-import sudoku.HiddenPairsSolver
-import sudoku.BasicSolver
-import sudoku.NakedPairsSolver
-import sudoku.OnlyPossibleInUnitSolver
-import sudoku.Board
+package sudoku
 
 class ReportingSolver {
 
@@ -11,7 +7,7 @@ class ReportingSolver {
     NakedPairsSolver nakedPairsSolver = new NakedPairsSolver()
     HiddenPairsSolver hiddenPairsSolver = new HiddenPairsSolver()
 
-    boolean solve (Board board) {
+    boolean solve(Board board) {
         while (nakedPairsSolver.solveForBoard(board)) {
             nakedPairsSolver.report.each {
                 println it

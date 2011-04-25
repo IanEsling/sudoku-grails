@@ -20,7 +20,7 @@ class Region extends AbstractUnit implements Comparable<Region> {
 
     @Override
     String toString() {
-        return "sudoku.Region $regionNumber"
+        return "Region $regionNumber"
     }
 
     int compareTo(Region t) {

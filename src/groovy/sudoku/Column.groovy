@@ -20,7 +20,7 @@ class Column extends AbstractUnit implements Comparable<Column> {
 
     @Override
     String toString() {
-        return "sudoku.Column $column"
+        return "Column $column"
     }
 
     int compareTo(Column t) {

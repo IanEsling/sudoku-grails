@@ -1,6 +1,7 @@
 import org.junit.Test
 import static org.junit.Assert.fail
 import sudoku.Board
+import sudoku.ReportingSolver
 
 class RunReportingSolver {
 
