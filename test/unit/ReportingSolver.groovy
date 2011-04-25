@@ -3,6 +3,7 @@ class ReportingSolver {
     BasicSolver basicSolver = new BasicSolver()
     OnlyPossibleInUnitSolver onlyPossibleInUnitSolver = new OnlyPossibleInUnitSolver()
     NakedPairsSolver nakedPairsSolver = new NakedPairsSolver()
+    HiddenPairsSolver hiddenPairsSolver = new HiddenPairsSolver()
 
     boolean solve (Board board) {
         while (nakedPairsSolver.solveForBoard(board)) {
@@ -12,6 +13,9 @@ class ReportingSolver {
             println board.asString()
             println board.toString()
             solve(board)
+        }
+        if (!board.isValid()) {
+            throw new RuntimeException("invalid board: ${board.toStringForFailedBoard()}")
         }
         return !board.toString().contains(".")
     }

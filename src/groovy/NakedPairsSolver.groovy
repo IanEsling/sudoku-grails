@@ -5,19 +5,25 @@ class NakedPairsSolver {
     List<String> report
     BasicSolver basicSolver = new BasicSolver()
     OnlyPossibleInUnitSolver onlyPossibleInUnitSolver = new OnlyPossibleInUnitSolver()
+    HiddenPairsSolver hiddenPairsSolver = new HiddenPairsSolver()
 
     boolean solveForBoard(Board board) {
-        if (!onlyPossibleInUnitSolver.solveForBoard(board)) {
-            if (!solveUnits(board.getRows())) {
-                if (!solveUnits(board.getColumns())) {
-                    if (!solveUnits(board.regions)) {
-                        return false
+        if (!basicSolver.solveForBoard(board)) {
+            hiddenPairsSolver.solveForBoard(board)
+            if (!onlyPossibleInUnitSolver.solveForBoard(board)) {
+                if (!solveUnits(board.getRows())) {
+                    if (!solveUnits(board.getColumns())) {
+                        if (!solveUnits(board.regions)) {
+                            return false
+                        }
                     }
                 }
             }
-        }
-        else {
-            report = onlyPossibleInUnitSolver.report
+            else {
+                report = onlyPossibleInUnitSolver.report
+            }
+        } else {
+            report = basicSolver.report
         }
         return true
     }
@@ -66,4 +72,5 @@ class NakedPairsSolver {
 
         return solved
     }
+
 }

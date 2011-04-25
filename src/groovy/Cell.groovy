@@ -20,6 +20,9 @@ class Cell implements Comparable<Cell> {
             if (values.size() == 1) {
                 report << "so it must be a ${values[0]}"
             }
+            if (values.size() == 0) {
+                throw new RuntimeException("reduced values for cell ${row},${column} to zero: ${report}")
+            }
         }
     }
 

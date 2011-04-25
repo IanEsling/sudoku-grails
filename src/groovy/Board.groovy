@@ -184,4 +184,8 @@ class Board {
         }
         return buffer.toString()
     }
+
+    boolean isValid() {
+        return allColumnsAreValid() && allRegionsAreValid() && allRowsAreValid()
+    }
 }
