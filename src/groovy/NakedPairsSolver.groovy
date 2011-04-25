@@ -66,5 +66,4 @@ class NakedPairsSolver {
 
         return solved
     }
-
 }

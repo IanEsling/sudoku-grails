@@ -13,6 +13,6 @@ class ReportingSolver {
             println board.toString()
             solve(board)
         }
-        return false
+        return !board.toString().contains(".")
     }
 }

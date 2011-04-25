@@ -1,14 +1,15 @@
 import org.junit.Test
+import static org.junit.Assert.fail
 
 class RunReportingSolver {
 
     @Test
     void runReportingSolver() {
-        Board board = new Board("3..2........1.7...7.6.3.5...7...9.8.9...2...4.1.8...5...9.4.3.1...7.2........8..6")
+        Board board = new Board("....7..6..5.4.6...2.8...4....31....5.4..9..3.6....31....4...7.8...8.4.9..3..5....")
         ReportingSolver reportingSolver = new ReportingSolver()
         println board.toString()
         if (!reportingSolver.solve(board)) {
-            println "failed to solve board: \n${board.toStringForFailedBoard()}"
+            fail "failed to solve board: \n${board.toStringForFailedBoard()}"
         }
     }
 }
