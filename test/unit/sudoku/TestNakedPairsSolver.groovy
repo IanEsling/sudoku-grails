@@ -1,8 +1,7 @@
+package sudoku
+
 import org.junit.Test
 import static org.junit.Assert.*
-import sudoku.OnlyPossibleInUnitSolver
-import sudoku.Board
-import sudoku.NakedPairsSolver
 
 class TestNakedPairsSolver {
 

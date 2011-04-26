@@ -1,3 +1,5 @@
+package sudoku
+
 import sudoku.Unit
 
 class UnitTestUtils {

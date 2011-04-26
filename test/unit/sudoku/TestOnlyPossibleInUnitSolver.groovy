@@ -1,9 +1,8 @@
+package sudoku
+
 import org.junit.Test
 import static org.junit.Assert.assertEquals
 import static org.junit.Assert.assertNotNull
-import sudoku.OnlyPossibleInUnitSolver
-import sudoku.BasicSolver
-import sudoku.Board
 
 class TestOnlyPossibleInUnitSolver {
 

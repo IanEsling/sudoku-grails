@@ -1,6 +1,8 @@
+package sudoku
+
 import org.junit.Test
-import static org.junit.Assert.*
-import sudoku.Board
+import static org.junit.Assert.assertEquals
+import static org.junit.Assert.assertNotNull
 
 class TestBoard {
 
@@ -65,12 +67,12 @@ class TestBoard {
     }
 
     @Test(expected = RuntimeException.class)
-    void invalidColumn(){
+    void invalidColumn() {
         newBoard("1........2........3........4........5........6........7........8........8........")
     }
 
     @Test(expected = RuntimeException.class)
-    void invalidRegion(){
+    void invalidRegion() {
         newBoard("123456789456789123791............................................................")
     }
 

@@ -1,6 +1,6 @@
+package sudoku
+
 import org.junit.Test
-import sudoku.Board
-import sudoku.BasicSolver
 
 class RunBasicSolver {
 
