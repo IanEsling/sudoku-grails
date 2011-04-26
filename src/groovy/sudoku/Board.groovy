@@ -11,6 +11,7 @@ class Board {
     final Set<Region> regions
 
     Board(String board) {
+        //TODO: accept things other than .s as empty squares
         if (!(board ==~ "[/.1-9]{81}")) {
             throw new RuntimeException("trying to create board with invalid string: $board")
         }
