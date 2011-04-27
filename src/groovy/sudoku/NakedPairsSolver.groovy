@@ -10,13 +10,18 @@ class NakedPairsSolver {
     HiddenPairsSolver hiddenPairsSolver = new HiddenPairsSolver()
 
     boolean solveForBoard(Board board) {
+        def boardState = board.toStringForFailedBoard()
         if (!basicSolver.solveForBoard(board)) {
             hiddenPairsSolver.solveForBoard(board)
             if (!onlyPossibleInUnitSolver.solveForBoard(board)) {
                 if (!solveUnits(board.getRows())) {
                     if (!solveUnits(board.getColumns())) {
                         if (!solveUnits(board.regions)) {
-                            return false
+                            if (!boardState.equals(board.toStringForFailedBoard())) {
+                                solveForBoard(board)
+                            } else {
+                                return false
+                            }
                         }
                     }
                 }

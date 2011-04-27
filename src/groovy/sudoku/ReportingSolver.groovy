@@ -2,10 +2,7 @@ package sudoku
 
 class ReportingSolver {
 
-    BasicSolver basicSolver = new BasicSolver()
-    OnlyPossibleInUnitSolver onlyPossibleInUnitSolver = new OnlyPossibleInUnitSolver()
     NakedPairsSolver nakedPairsSolver = new NakedPairsSolver()
-    HiddenPairsSolver hiddenPairsSolver = new HiddenPairsSolver()
 
     boolean solve(Board board) {
         while (nakedPairsSolver.solveForBoard(board)) {
