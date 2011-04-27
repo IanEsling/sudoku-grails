@@ -23,12 +23,6 @@ class TestUniqueToUnitSolver {
     void otherPairInUnit() {
         UniqueToUnitSolver testee = new UniqueToUnitSolver()
         Board board = new Board("8.1..7.9.59..8..61.3.....8..1.275843358.6.127274138956.8.....3.1..82..79.2.7..418")
-
-        NakedPairsSolver solver = new NakedPairsSolver()
-        if (solver.solveForBoard(board)){
-            println solver.report
-            fail("naked pairs solver solved something: \n${board.toStringForFailedBoard()}")
-        }
         testee.solveForBoard(board)
         assertFalse("3 not removed from 2,6: \n${board.toStringForFailedBoard()}", board.getCell(2,6).values.contains(3))
     }
