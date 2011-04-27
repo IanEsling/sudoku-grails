@@ -8,9 +8,9 @@ import java.util.Set;
 
 public abstract class AbstractUnit implements Unit {
 
-    String type;
+    UnitType type;
 
-    public String getType() {
+    public UnitType getType() {
         return type;
     }
 

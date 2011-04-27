@@ -12,5 +12,5 @@ public interface Unit {
 
     Set<Integer> possibleNumbers();
 
-    String getType();
+    UnitType getType();
 }

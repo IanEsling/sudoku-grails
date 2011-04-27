@@ -8,6 +8,7 @@ class NakedPairsSolver {
     BasicSolver basicSolver = new BasicSolver()
     OnlyPossibleInUnitSolver onlyPossibleInUnitSolver = new OnlyPossibleInUnitSolver()
     HiddenPairsSolver hiddenPairsSolver = new HiddenPairsSolver()
+    UniqueToUnitSolver uniqueToUnitSolver = new UniqueToUnitSolver()
 
     boolean solveForBoard(Board board) {
         def boardState = board.toStringForFailedBoard()
@@ -17,10 +18,15 @@ class NakedPairsSolver {
                 if (!solveUnits(board.getRows())) {
                     if (!solveUnits(board.getColumns())) {
                         if (!solveUnits(board.regions)) {
-                            if (!boardState.equals(board.toStringForFailedBoard())) {
-                                solveForBoard(board)
+                            if (!uniqueToUnitSolver.solveForBoard(board)) {
+                                //if not solved a square but we've narrowed some possibles down then try again
+                                if (!boardState.equals(board.toStringForFailedBoard())) {
+                                    return solveForBoard(board)
+                                } else {
+                                    return false
+                                }
                             } else {
-                                return false
+                                report = uniqueToUnitSolver.report
                             }
                         }
                     }

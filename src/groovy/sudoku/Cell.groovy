@@ -14,6 +14,10 @@ class Cell implements Comparable<Cell> {
         this.values = new ArrayList<Integer>(values)
     }
 
+    void remove(Integer number) {
+        values.removeAll(Lists.newArrayList(number))
+    }
+
     void remove(Unit unit) {
         if (unit.solvedNumbers().intersect(values).size() > 0) {
             //TODO: add turn number that this report was made

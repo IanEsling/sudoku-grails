@@ -7,7 +7,7 @@ class Row extends AbstractUnit implements Comparable<Row> {
 
     Integer row
     Set<Cell> cells
-    String type = "row"
+    UnitType type = UnitType.Row
 
     Row(Integer row, Collection<Cell> cells) {
         this.row = row

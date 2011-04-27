@@ -6,7 +6,7 @@ import com.google.common.collect.Collections2
 class Region extends AbstractUnit implements Comparable<Region> {
 
     Set<Cell> cells
-    String type = "region"
+    UnitType type = UnitType.Region
     int regionNumber
 
     Region(Collection<Integer> columns, Collection<Integer> rows, Collection<Cell> cells, int regionNumber) {

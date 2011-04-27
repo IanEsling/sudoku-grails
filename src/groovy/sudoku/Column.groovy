@@ -6,7 +6,7 @@ import com.google.common.collect.Collections2
 class Column extends AbstractUnit implements Comparable<Column> {
 
     Set<Cell> cells
-    String type = "column"
+    UnitType type = UnitType.Column
     Integer column
 
     Column(Integer column, Collection<Cell> cells) {
