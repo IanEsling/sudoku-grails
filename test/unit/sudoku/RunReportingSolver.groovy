@@ -7,7 +7,7 @@ class RunReportingSolver {
 
     @Test
     void runReportingSolver() {
-        Board board = new Board("..1..7.9.59..8...1.3.....8......58...5..6..2...41......8.....3.1...2..79.2.7..4..")
+        Board board = new Board("38..........4..785..9.2.3...6..9....8..3.2..9....4..7...1.7.5..495..6..........92")
         ReportingSolver reportingSolver = new ReportingSolver()
         println board.toString()
         if (!reportingSolver.solve(board)) {
