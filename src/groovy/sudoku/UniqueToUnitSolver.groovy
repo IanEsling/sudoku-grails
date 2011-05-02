@@ -7,10 +7,10 @@ class UniqueToUnitSolver {
     List<String> report
 
     boolean solveForBoard(Board board) {
-        if (!solveUnits(board.getRows(), board.regions)) {
-            if (!solveUnits(board.getColumns(), board.regions)) {
+        if (!solveUnits(board.rows, board.regions)) {
+            if (!solveUnits(board.columns, board.regions)) {
                 if (!solveUnits(board.regions, board.rows)) {
-                    if (!solveUnits(board.regions, board.rows)) {
+                    if (!solveUnits(board.regions, board.columns)) {
                         return false
                     }
                 }
@@ -38,10 +38,11 @@ class UniqueToUnitSolver {
                 otherUnits.find {otherUnit ->
                     otherUnit.cells.containsAll(unsolvedCells)
                 }.unsolvedCells.each {cell ->
-                    if (!unit.unsolvedCells.findAll {
-                        it.values.contains(number)
-                    }.contains(cell)) {
-                        cell.report.add("${cell.row},${cell.column} " + cell.values + " cannot be a $number because it can only exist in $unit")
+                    if (!unsolvedCells.contains(cell) && cell.values.contains(number)) {
+                        cell.report.add("${cell.row},${cell.column} " + cell.values +
+                                " cannot be a $number because it can only exist in $unit in " + otherUnits.find {otherUnit ->
+                                        otherUnit.cells.containsAll(unsolvedCells)
+                                    })
                         cell.remove number
                         if (cell.values.size() == 1) {
                             solved = true
