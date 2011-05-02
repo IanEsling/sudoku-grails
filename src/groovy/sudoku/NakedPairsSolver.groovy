@@ -63,7 +63,8 @@ class NakedPairsSolver {
                     if (pair.values.intersect(otherPair.values).size() == 2) {
 
                         unit.unsolvedCells.findAll {cell ->
-                            !pairs.contains(cell)
+                            !pairs.contains(cell) &&
+                                    cell.values.intersect(pair.values.intersect(otherPair.values)).size() > 0
                         }.each {cell ->
                             if (!solved) {
                                 def tempValues = cell.values.clone()

@@ -7,6 +7,8 @@ class TestNakedPairsSolver {
 
     NakedPairsSolver testee = new NakedPairsSolver()
 
+
+
 //    3  .  1  |  2  8  .  |  .  .  7
 //    .  .  .  |  1  .  7  |  .  .  .
 //    7  .  6  |  9  3  4  |  5  1  .
