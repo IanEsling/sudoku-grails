@@ -15,8 +15,8 @@ class NakedPairsSolver {
         if (!basicSolver.solveForBoard(board)) {
             hiddenPairsSolver.solveForBoard(board)
             if (!onlyPossibleInUnitSolver.solveForBoard(board)) {
-                if (!solveUnits(board.getRows())) {
-                    if (!solveUnits(board.getColumns())) {
+                if (!solveUnits(board.rows)) {
+                    if (!solveUnits(board.columns)) {
                         if (!solveUnits(board.regions)) {
                             if (!uniqueToUnitSolver.solveForBoard(board)) {
                                 //if not solved a square but we've narrowed some possibles down then try again
