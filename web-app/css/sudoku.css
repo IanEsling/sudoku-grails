@@ -28,15 +28,26 @@ tr {
 
 .last_one_solved {
     font-weight: bold;
-    color: red;
+    color: #f7e517;
+}
+
+.light {
+    background-color: #3856f5;
+}
+
+.dark {
+    background-color: #2b2bcd;
 }
 
 td {
     width: 10%;
     height: 10%;
-    border: 1px solid gray;
+    border: 1px solid black;
     border-bottom-width: 0;
     text-align: center;
+    color: #f5f5f5;
+    font-size: 22px;
+    font-weight: bold;
 }
 
 #board {

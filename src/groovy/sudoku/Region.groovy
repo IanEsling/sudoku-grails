@@ -9,6 +9,12 @@ class Region extends AbstractUnit implements Comparable<Region> {
     UnitType type = UnitType.Region
     int regionNumber
 
+    public Boolean contains(Cell cell) {
+        return cells.any {
+            it.equals(cell)
+        }
+    }
+
     Region(Collection<Integer> columns, Collection<Integer> rows, Collection<Cell> cells, int regionNumber) {
         this.cells = Collections2.filter(cells, new Predicate<Cell>() {
             boolean apply(Cell cell) {
