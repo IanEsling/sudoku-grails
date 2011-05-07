@@ -4,6 +4,7 @@ import com.google.common.collect.Lists
 
 class Cell implements Comparable<Cell> {
 
+    boolean lastOneSolved
     final Integer row, column
     final List<Integer> values
     List<String> report = Lists.newArrayList()
@@ -16,6 +17,13 @@ class Cell implements Comparable<Cell> {
 
     void remove(Integer number) {
         values.removeAll(Lists.newArrayList(number))
+        if (values.size() == 1) {
+            report << "so it must be a ${values[0]}"
+            lastOneSolved = true
+        }
+        if (values.size() == 0) {
+            throw new RuntimeException("reduced values for cell ${row},${column} to zero: ${report}")
+        }
     }
 
     void remove(Unit unit) {
@@ -23,12 +31,8 @@ class Cell implements Comparable<Cell> {
             //TODO: add turn number that this report was made
             report << "$row,$column ${values.toListString()} cannot be a ${makePresentable(unit.solvedNumbers().intersect(values))}" +
                     "in ${unit.toString()}"
-            values.removeAll unit.solvedNumbers()
-            if (values.size() == 1) {
-                report << "so it must be a ${values[0]}"
-            }
-            if (values.size() == 0) {
-                throw new RuntimeException("reduced values for cell ${row},${column} to zero: ${report}")
+            unit.solvedNumbers().intersect(values).each {
+                remove it
             }
         }
     }

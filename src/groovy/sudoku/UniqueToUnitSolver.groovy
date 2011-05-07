@@ -19,13 +19,13 @@ class UniqueToUnitSolver {
         return true
     }
 
-    boolean solveUnits(Set<Unit> units, Set<Unit> otherUnits) {
+    boolean solveUnits(Set<? extends Unit> units, Set<? extends Unit> otherUnits) {
         units.any {unit ->
             solveUnit unit, otherUnits
         }
     }
 
-    boolean solveUnit(Unit unit, Set<Unit> otherUnits) {
+    boolean solveUnit(Unit unit, Set<? extends Unit> otherUnits) {
         report = Lists.newArrayList()
         boolean solved = false
         unit.possibleNumbers().each {number ->

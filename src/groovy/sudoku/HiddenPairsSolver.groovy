@@ -2,10 +2,7 @@ package sudoku
 
 class HiddenPairsSolver {
 
-    Board board
-
     boolean solveForBoard(Board board) {
-        this.board = board
         if (!solveUnits(board.getRows())) {
             if (!solveUnits(board.getColumns())) {
                 if (!solveUnits(board.regions)) {
@@ -16,7 +13,7 @@ class HiddenPairsSolver {
         return false
     }
 
-    boolean solveUnits(Set<Unit> units) {
+    boolean solveUnits(Set<? extends Unit> units) {
         units.any {unit ->
             solveUnit unit
         }

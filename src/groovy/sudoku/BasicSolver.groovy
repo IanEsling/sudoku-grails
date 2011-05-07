@@ -15,7 +15,7 @@ class BasicSolver {
         return true
     }
 
-    boolean solveUnits(Set<Unit> units) {
+    boolean solveUnits(Set<? extends Unit> units) {
         units.any {unit ->
             solveUnit unit
         }

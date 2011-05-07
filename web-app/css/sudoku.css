@@ -1,5 +1,6 @@
 body {
     width: 100%;
+    font-family: Helvetica, serif;
 }
 
 table {
@@ -13,6 +14,21 @@ table {
 tr {
     border: 0 solid gray;
     border-bottom-width: 1px;
+}
+
+.row_divider {
+    border-bottom-color: black;
+    border-bottom-width: 2px;
+}
+
+.cell_divider {
+    border-right-color:black;
+    border-right-width:2px
+}
+
+.last_one_solved {
+    font-weight: bold;
+    color: red;
 }
 
 td {
