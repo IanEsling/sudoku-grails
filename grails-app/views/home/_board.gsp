@@ -11,11 +11,33 @@
                             <g:findAll in="${session.board.regions}" expr="${it.contains(cell)}">
                                 <g:set var="light" value="${it.regionNumber % 2 == 0}"/>
                             </g:findAll>
-                            <td class="<g:if test='${divider}'>cell_divider </g:if>
-                            <g:if test='${lastOneSolved}'>last_one_solved </g:if>
-                            <g:if test='${originalCell}'>original_cell </g:if>
-                            <g:if test='${light}'>light </g:if><g:else>dark </g:else>">
-                                <g:if test="${cell.values.size() == 1}">${cell.values[0]}</g:if></td>
+                            <td class="<g:if test='${divider}'>cell_divider</g:if>
+                            <g:if test='${lastOneSolved}'>last_one_solved</g:if>
+                            <g:if test='${originalCell}'>original_cell</g:if>
+                            <g:if test='${light}'>light</g:if><g:else>dark</g:else>
+                            ">
+                                <g:if test="${cell.values.size() == 1}">${cell.values[0]}
+                                </g:if>
+                                <g:else>
+                                    <table class="notes">
+                                        <tr class="note_row">
+                                            <g:each in="[1,2,3]" var="col">
+                                                <td class="note_cell"><g:if test="${cell.values.contains(col)}">${col}</g:if></td>
+                                            </g:each>
+                                        </tr>
+                                        <tr class="note_row">
+                                            <g:each in="[4,5,6]" var="col">
+                                                <td class="note_cell"><g:if test="${cell.values.contains(col)}">${col}</g:if></td>
+                                            </g:each>
+                                        </tr>
+                                        <tr class="note_row">
+                                            <g:each in="[7,8,9]" var="col">
+                                                <td class="note_cell"><g:if test="${cell.values.contains(col)}">${col}</g:if></td>
+                                            </g:each>
+                                        </tr>
+                                    </table>
+                                </g:else>
+                            </td>
                         </g:each>
                     </tr>
                 </g:each>

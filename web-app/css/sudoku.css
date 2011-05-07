@@ -54,6 +54,24 @@ td {
     font-weight: bold;
 }
 
+.notes {
+    margin-left: 0;
+    margin-right: 0;
+    width: 100%;
+    height: 100%;
+}
+
+.note_row {
+    border: 0 none;
+}
+
+.note_cell {
+    font-size:12px;
+    border: 0 none;
+    width: 33%;
+    height: 33%;
+}
+
 #board {
     float: left;
     width: 60%;
