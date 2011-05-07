@@ -22,8 +22,10 @@ class TestUniqueToUnitSolver {
     @Test
     void otherPairInUnit() {
         UniqueToUnitSolver testee = new UniqueToUnitSolver()
+        BasicSolver basicSolver = new BasicSolver()
         Board board = new Board("8.1..7.9.59..8..61.3.....8..1.275843358.6.127274138956.8.....3.1..82..79.2.7..418")
+        basicSolver.solveForBoard(board)
         testee.solveForBoard(board)
-        assertFalse("3 not removed from 2,6: \n${board.toStringForFailedBoard()}", board.getCell(2,6).values.contains(3))
+        assertFalse("4 not removed from 1,5: \n${board.toStringForFailedBoard()}", board.getCell(1,5).values.contains(4))
     }
 }
