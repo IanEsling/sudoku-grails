@@ -57,6 +57,12 @@ class Board implements Serializable {
         }
     }
 
+    def originalCells = {
+        cells.findAll {
+            it.originalCell
+        }
+    }
+
     boolean allRegionsAreValid() {
         regions.every {region ->
             unitCellsAreValid region

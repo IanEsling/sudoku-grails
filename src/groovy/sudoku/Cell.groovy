@@ -4,7 +4,7 @@ import com.google.common.collect.Lists
 
 class Cell implements Comparable<Cell> {
 
-    boolean lastOneSolved
+    boolean lastOneSolved, originalCell
     final Integer row, column
     final List<Integer> values
     List<String> report = Lists.newArrayList()
@@ -13,6 +13,13 @@ class Cell implements Comparable<Cell> {
         this.row = row
         this.column = column
         this.values = new ArrayList<Integer>(values)
+        this.originalCell = values.size() == 1
+    }
+
+    void solve(Integer number) {
+        values.each {
+            it == number ? null : remove(it)
+        }
     }
 
     void remove(Integer number) {

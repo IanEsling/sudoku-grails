@@ -16,7 +16,9 @@ class HomeController {
     }
 
     def newBoard = {
-        session.putValue("board", new Board(params.newBoard))
+        Board board = new Board(params.newBoard)
+        session.putValue("board", board)
+        session.putValue("originalCells", board.originalCells())
         render(view:"index")
     }
 

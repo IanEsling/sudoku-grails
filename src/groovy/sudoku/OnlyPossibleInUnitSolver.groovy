@@ -43,6 +43,7 @@ class OnlyPossibleInUnitSolver {
                         cell.values.contains(number)
                     }
                     cell.values.retainAll([number])
+                    cell.lastOneSolved = true
                     solved = true
                     cell.report << "${cell.row},${cell.column} is the only possible in its ${unit.type} to be $number"
                     report = cell.report

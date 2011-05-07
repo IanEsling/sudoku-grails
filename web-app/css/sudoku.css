@@ -26,9 +26,12 @@ tr {
     border-right-width:2px
 }
 
-.last_one_solved {
-    font-weight: bold;
+.original_cell {
     color: #f7e517;
+}
+
+.last_one_solved {
+    color: #dc143c;
 }
 
 .light {

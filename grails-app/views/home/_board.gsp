@@ -7,13 +7,14 @@
                         <g:each in="${row.cells}" var="cell" status="cellIndex">
                             <g:set var="divider" value="${cellIndex == 2 || cellIndex == 5}"/>
                             <g:set var="lastOneSolved" value="${cell.lastOneSolved}"/>
+                            <g:set var="originalCell" value="${session.originalCells.contains(cell)}"/>
                             <g:findAll in="${session.board.regions}" expr="${it.contains(cell)}">
                                 <g:set var="light" value="${it.regionNumber % 2 == 0}"/>
                             </g:findAll>
                             <td class="<g:if test='${divider}'>cell_divider </g:if>
                             <g:if test='${lastOneSolved}'>last_one_solved </g:if>
-                            <g:if test='${light}'>light </g:if><g:else>dark </g:else>"
-                            <td>
+                            <g:if test='${originalCell}'>original_cell </g:if>
+                            <g:if test='${light}'>light </g:if><g:else>dark </g:else>">
                                 <g:if test="${cell.values.size() == 1}">${cell.values[0]}</g:if></td>
                         </g:each>
                     </tr>
