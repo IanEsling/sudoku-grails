@@ -8,7 +8,7 @@ class HomeController {
         if (solver.solveForBoard(board)) {
             def map = [report: solver.report]
             session.putValue("board", board)
-            render (template:"board", model: [report: solver.report])
+            render (template:"board", model: map)
         } else {
             render (view:"failed")
         }
