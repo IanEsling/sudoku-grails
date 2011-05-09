@@ -54,11 +54,19 @@ td {
     font-weight: bold;
 }
 
-.notes {
+.notes, .visibleNotes, .hideNotes {
     margin-left: 0;
     margin-right: 0;
     width: 100%;
     height: 100%;
+}
+
+.hideNotes {
+    display: none;
+}
+
+.visibleNotes {
+    /*display: inline;*/
 }
 
 .note_row {

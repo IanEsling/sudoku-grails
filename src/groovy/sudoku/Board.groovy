@@ -120,8 +120,12 @@ class Board implements Serializable {
         return buffer.toString()
     }
 
-    Cell getCell(Integer row, Integer column){
-        cells.find {cell->
+    boolean isSolved() {
+        return !asString().contains(".")
+    }
+
+    Cell getCell(Integer row, Integer column) {
+        cells.find {cell ->
             cell.row == row && cell.column == column
         }
     }

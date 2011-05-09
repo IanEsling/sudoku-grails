@@ -8,8 +8,7 @@ class HomeController {
         if (solver.solveForBoard(board)) {
             def map = [report: solver.report]
             session.putValue("board", board)
-            //TODO: redirect to index, render report from last solved cell instead of solver (i.e. get it all from the board)
-            render (view:"index", model: map)
+            render (template:"board", model: [report: solver.report])
         } else {
             render (view:"failed")
         }
