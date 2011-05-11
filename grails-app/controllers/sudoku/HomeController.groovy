@@ -18,6 +18,7 @@ class HomeController {
         Board board = new Board(params.newBoard)
         session.putValue("board", board)
         session.putValue("originalCells", board.originalCells())
+        session.putValue("originalBoard", board.asString())
         render(view:"index")
     }
 

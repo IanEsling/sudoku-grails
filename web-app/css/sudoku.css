@@ -23,7 +23,7 @@ tr {
 }
 
 .cell_divider {
-    border-right-color:black;
+    /*border-right-color:black;*/
     border-right-width:2px
 }
 
@@ -47,26 +47,22 @@ td {
     width: 10%;
     height: 10%;
     border: 1px solid black;
-    border-bottom-width: 0;
+    /*border-bottom-width: 0;*/
     text-align: center;
     color: #f5f5f5;
     font-size: 22px;
     font-weight: bold;
 }
 
-.notes, .visibleNotes, .hideNotes {
+.notes, .visible_notes, .hide_notes {
     margin-left: 0;
     margin-right: 0;
     width: 100%;
     height: 100%;
 }
 
-.hideNotes {
+.hide_notes {
     display: none;
-}
-
-.visibleNotes {
-    /*display: inline;*/
 }
 
 .note_row {
@@ -82,15 +78,30 @@ td {
 
 #board {
     float: left;
-    width: 60%;
+    width: 50%;
 }
 
-#report {
+.report {
     float: right;
-    width: 30%;
+    width: 40%;
     margin-right: 20px;
 }
 
-.newBoard {
+.report li {
+    list-style: none;
+    margin-bottom: 15px;
+}
+
+.new_board {
     width: 50%;
+}
+
+.notes_link {
+    float: left;
+    width: 100%;
+}
+
+.board_cell_with_notes {
+    border-color: #f7e517;
+    cursor: pointer;
 }
