@@ -8,6 +8,10 @@ body {
     background-color: #e6d4b9;
     padding: 20px;
     margin: 20px;
+    -moz-border-radius-bottomright: 12px;
+    border-bottom-right-radius: 12px;
+    -moz-border-radius-topright: 12px;
+    border-top-right-radius: 12px;
 }
 
 table {
@@ -131,7 +135,8 @@ a:hover {
 }
 
 .notes_link p {
-    margin: 40px;
+    margin-top: 20px;
+    padding: 3px;
 }
 
 .board_cell_with_notes {
