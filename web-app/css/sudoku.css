@@ -102,6 +102,14 @@ td {
 }
 
 .board_cell_with_notes {
-    border-color: #f7e517;
     cursor: pointer;
+    /* fallback, somewhere in between light and dark */
+    background-color: #332ed6;
+    /* Firefox 3.6+ */
+    background: -moz-radial-gradient(circle, #3856f5, #2b2bcd);
+    /* Safari 4-5, Chrome 1-9 */
+    background: -webkit-gradient(radial, center center, 0, center center, 50, from(#3856f5), to(#2b2bcd));
+    /* Safari 5.1+, Chrome 10+ */
+    background: -webkit-radial-gradient(circle, #3856f5, #2b2bcd);
+    /* Opera cannot do radial gradients yet */
 }
