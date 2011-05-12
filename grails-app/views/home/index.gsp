@@ -62,7 +62,7 @@
 
 <div class="notes_link" <g:if test="${session.board == null}">style="display:none"</g:if>>
     <p>
-        <g:if test="${!session.board.solved}">
+        <g:if test="${session.board != null && !session.board.solved}">
         %{--<p>--}%
             <g:remoteLink style="margin-left:25%" action="solve" update="mainContainer">
                 Click to solve a square
