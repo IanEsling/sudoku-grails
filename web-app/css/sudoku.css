@@ -32,7 +32,7 @@ tr {
 }
 
 .last_one_solved {
-    color: #dc143c;
+    color: #f50938;
 }
 
 .light {
@@ -96,9 +96,36 @@ td {
     width: 50%;
 }
 
+a {
+    margin: 20px;
+    padding: 15px;
+    background-color: #cd2323;
+    color: white;
+    font-weight: bold;
+    text-decoration: none;
+    text-shadow: 0 1px 1px rgba(0,0,0,.3);
+
+    -moz-border-radius: 8px;
+    border-radius: 8px;
+    background: -webkit-gradient(linear, left top, left bottom, from(#f12f2f), to(#cd2323));
+    background: -moz-linear-gradient(top,  #f12f2f,  #cd2323);
+    -webkit-box-shadow: 0 1px 2px rgba(0,0,0,.2);
+	-moz-box-shadow: 0 1px 2px rgba(0,0,0,.2);
+	box-shadow: 0 1px 2px rgba(0,0,0,.2);
+}
+
+a:hover {
+    cursor: pointer;
+}
+
 .notes_link {
     float: left;
-    width: 100%;
+    width: 60%;
+    margin-top: 15px;
+}
+
+.notes_link p {
+    margin: 40px;
 }
 
 .board_cell_with_notes {

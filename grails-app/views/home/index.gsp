@@ -61,13 +61,22 @@
 </div>
 
 <div class="notes_link" <g:if test="${session.board == null}">style="display:none"</g:if>>
-    <a id="showNotes" href="#">Show Notes</a>
-    <a id="hideNotes" href="#">Hide Notes</a>
+    <p>
+        <g:if test="${!session.board.solved}">
+        %{--<p>--}%
+            <g:remoteLink style="margin-left:25%" action="solve" update="mainContainer">
+                Click to solve a square
+            </g:remoteLink>
+        %{--</p>--}%
+        </g:if>
+        <a id="showNotes" href="#">Show Notes</a>
+        <a id="hideNotes" href="#">Hide Notes</a>
+    </p>
+    <p>
     <g:if test="${session.originalBoard != null}">
         <p>Playing original board of: <span style="font-size:large;font-family:monospace">${session.originalBoard}</span></p>
     </g:if>
-    <p></p>
+    </p>
 </div>
-
 </body>
 </html>

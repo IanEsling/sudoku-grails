@@ -16,7 +16,7 @@
                     <g:if test='${light}'>light</g:if><g:else>dark</g:else>
                     "
                         <g:if test="${cell.values.size() > 1}">onclick="report('${cell.row}_${cell.column}')"
-                        onmouseover="hasNotes('${cell.row}x${cell.column}')" onmouseout="noNotes('${cell.row}x${cell.column}')" </g:if>>
+                        onmouseover="hasNotes('${cell.row}x${cell.column}')" onmouseout="noNotes('${cell.row}x${cell.column}')"</g:if>>
                         <g:if test="${cell.values.size() == 1}">${cell.values[0]}
                         </g:if>
                         <g:else>
@@ -59,11 +59,6 @@
     <script type="text/javascript">
         notesVisible();
     </script>
-    <g:if test="${!session.board.solved}">
-        <g:remoteLink action="solve" update="mainContainer">
-            Click to solve a square
-        </g:remoteLink>
-    </g:if>
     </div>
 
     <div class="report">
