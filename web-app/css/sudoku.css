@@ -4,6 +4,12 @@ body {
     background-color: #ffebcd;
 }
 
+#solvedCellReport ul, #cellNotes ul {
+    background-color: #e6d4b9;
+    padding: 20px;
+    margin: 20px;
+}
+
 table {
     width: 100%;
     height: 70%;

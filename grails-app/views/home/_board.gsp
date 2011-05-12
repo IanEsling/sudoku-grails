@@ -61,18 +61,20 @@
     </script>
     </div>
 
-    <div class="report">
-        <div id="spinner" style="display:none;">
-            <img src="${createLinkTo(dir: 'images', file: 'spinner.gif')}" border="0" alt="Loading..." title="Loading..." width="32" height="32"/>
+    <div <g:if test="${report == null}">style="display:none"</g:if>>
+        <div id="solvedCellReport" class="report">
+            <div id="spinner" style="display:none;">
+                <img src="${createLinkTo(dir: 'images', file: 'spinner.gif')}" border="0" alt="Loading..." title="Loading..." width="32" height="32"/>
+            </div>
+            <p style="font-weight: bold;">Notes for solved square :</p>
+            <ul>
+                <g:each in="${report}" var="line">
+                    <li>${line}</li>
+                </g:each>
+            </ul>
         </div>
+        <div id="cellNotes" class="report">
 
-        <ul>
-            <g:each in="${report}" var="line">
-                <li>${line}</li>
-            </g:each>
-        </ul>
-    </div>
-    <div id="cellNotes" class="report">
-
+        </div>
     </div>
 </g:if>
