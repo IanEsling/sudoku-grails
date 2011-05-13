@@ -64,7 +64,7 @@ td {
     font-weight: bold;
 }
 
-.notes, .visible_notes, .hide_notes {
+.notes, .visible_notes, .hide_notes, .select_notes {
     margin-left: 0;
     margin-right: 0;
     width: 100%;
@@ -79,16 +79,32 @@ td {
     border: 0 none;
 }
 
-.note_cell {
+.note_cell, .select_note_cell {
     font-size:12px;
     border: 0 none;
     width: 33%;
     height: 33%;
+    padding: 5px;
+}
+
+.select_note_cell {
+    cursor: pointer;
+}
+
+[class="select_note_cell"]:hover {
+    font-size: larger;
+    padding: 0;
+    color: #ffff00;
 }
 
 #board {
     float: left;
     width: 50%;
+}
+
+#newBoard {
+    float: left;
+    width: 70%;
 }
 
 .report {
@@ -153,4 +169,8 @@ a:hover {
     /* Safari 5.1+, Chrome 10+ */
     background: -webkit-radial-gradient(circle, #3856f5, #2b2bcd);
     /* Opera cannot do radial gradients yet */
+}
+
+.pointer {
+    cursor: pointer;
 }

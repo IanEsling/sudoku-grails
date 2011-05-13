@@ -43,6 +43,18 @@
             $("cellNotes").update($(reportMe).innerHTML);
         }
 
+        function showTable(table) {
+            $(table).show();
+        }
+
+        function hideTable(table) {
+            $(table).hide();
+        }
+
+        function selectForCell(number, cell) {
+            $(cell).update(number);
+        }
+
         document.observe("dom:loaded", function() {
             $("showNotes").observe('click', showNotes);
             $("hideNotes").observe('click', hideNotes);
@@ -58,6 +70,7 @@
 
 <div id="mainContainer">
     <g:render template="board"/>
+    <g:render template="newBoard"/>
 </div>
 
 <div class="notes_link" <g:if test="${session.board == null}">style="display:none"</g:if>>
@@ -69,8 +82,8 @@
             </g:remoteLink>
         %{--</p>--}%
         </g:if>
-        <a id="showNotes" href="#">Show Notes</a>
-        <a id="hideNotes" href="#">Hide Notes</a>
+        <a id="showNotes" href="#">Show All Notes</a>
+        <a id="hideNotes" href="#">Hide All Notes</a>
     </p>
     <p>
     <g:if test="${session.originalBoard != null}">

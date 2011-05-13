@@ -35,7 +35,6 @@ class Cell implements Comparable<Cell> {
 
     void remove(Unit unit) {
         if (unit.solvedNumbers().intersect(values).size() > 0) {
-            //TODO: add turn number that this report was made
             report << "$row,$column ${values.toListString()} cannot be a ${makePresentable(unit.solvedNumbers().intersect(values))}" +
                     "in ${unit.toString()}"
             unit.solvedNumbers().intersect(values).each {
