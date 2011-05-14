@@ -63,6 +63,24 @@
             });
         }
 
+        function go() {
+            var board = "";
+            var row;
+            var col;
+            for (row = 1; row <= 9; row++) {
+                for (col = 1; col <= 9; col++) {
+                    var tableName = "table"+row+col;
+                    if ($(tableName) == null) {
+                        board = board + $(row.toString()+col.toString()).innerHTML;
+                    } else {
+                        board = board + ".";
+                    }
+                }
+            }
+            $('newBoardString').value = board;
+            $('newBoard').submit();
+        }
+
         document.observe("dom:loaded", function() {
             $("showNotes").observe('click', showNotes);
             $("hideNotes").observe('click', hideNotes);
@@ -84,7 +102,10 @@
 <div class="notes_link" <g:if test="${session.board == null}">style="display:none"</g:if>>
     <p>
         <g:if test="${session.board != null && !session.board.solved}">
-            <g:remoteLink style="margin-left:25%" action="solve" update="mainContainer">
+            <g:remoteLink action="clear" update="mainContainer">
+                Start new board
+            </g:remoteLink>
+            <g:remoteLink action="solve" update="mainContainer">
                 Click to solve a square
             </g:remoteLink>
         </g:if>

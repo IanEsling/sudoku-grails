@@ -2,6 +2,11 @@ package sudoku
 
 class HomeController {
 
+    def clear = {
+        session.board = null
+        render (view: "index")
+    }
+
     def solve = {
         NakedPairsSolver solver = new NakedPairsSolver()
         def board = new Board(session.board.asString())
@@ -15,7 +20,7 @@ class HomeController {
     }
 
     def newBoard = {
-        Board board = new Board(params.newBoard)
+        Board board = new Board(params.newBoardString)
         session.putValue("board", board)
         session.putValue("originalCells", board.originalCells())
         session.putValue("originalBoard", board.asString())

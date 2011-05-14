@@ -37,4 +37,7 @@
             </g:each>
         </table>
     </div>
+    <div style="width: 25%; margin-top: 30px; margin-left: 20px; float: right;">
+        <a onclick="go()" href="#">Go!</a>
+    </div>
 </g:if>
