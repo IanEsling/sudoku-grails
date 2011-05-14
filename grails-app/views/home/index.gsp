@@ -44,15 +44,23 @@
         }
 
         function showTable(table) {
-            $(table).addClassName("select_notes");
+            if ($(table) != null) {
+                $(table).addClassName("select_notes");
+            }
         }
 
         function hideTable(table) {
-            $(table).removeClassName("select_notes");
+            if ($(table) != null) {
+                $(table).removeClassName("select_notes");
+            }
         }
 
         function selectForCell(number, cell) {
+            var html = $(cell).innerHTML;
             $(cell).update(number);
+            $(cell).observe('click', function(event) {
+                event.findElement().update(html);
+            });
         }
 
         document.observe("dom:loaded", function() {
@@ -83,11 +91,11 @@
         <a id="showNotes" href="#">Show All Notes</a>
         <a id="hideNotes" href="#">Hide All Notes</a>
     </p>
-    <p>
+<p>
     <g:if test="${session.originalBoard != null}">
         <p>Playing original board of: <span style="font-size:large;font-family:monospace">${session.originalBoard}</span></p>
     </g:if>
-    </p>
+</p>
 </div>
 </body>
 </html>
