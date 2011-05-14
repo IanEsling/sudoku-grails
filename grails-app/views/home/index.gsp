@@ -44,11 +44,11 @@
         }
 
         function showTable(table) {
-            $(table).show();
+            $(table).addClassName("select_notes");
         }
 
         function hideTable(table) {
-            $(table).hide();
+            $(table).removeClassName("select_notes");
         }
 
         function selectForCell(number, cell) {
@@ -76,11 +76,9 @@
 <div class="notes_link" <g:if test="${session.board == null}">style="display:none"</g:if>>
     <p>
         <g:if test="${session.board != null && !session.board.solved}">
-        %{--<p>--}%
             <g:remoteLink style="margin-left:25%" action="solve" update="mainContainer">
                 Click to solve a square
             </g:remoteLink>
-        %{--</p>--}%
         </g:if>
         <a id="showNotes" href="#">Show All Notes</a>
         <a id="hideNotes" href="#">Hide All Notes</a>

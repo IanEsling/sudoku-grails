@@ -14,7 +14,7 @@
                                     class="<g:if test='${divider}'>cell_divider</g:if>
                         <g:if test='${light}'>light</g:if><g:else>dark</g:else>
                         ">
-                            <table id="table${row}${cell}" class="select_notes">
+                            <table id="table${row}${cell}" class="select_notes_<g:if test='${light}'>light</g:if><g:else>dark</g:else>">
                                 <tr class="note_row">
                                     <g:each in="[1,2,3]" var="col">
                                         <td class="select_note_cell" onclick="selectForCell(${col}, '${row}${cell}')">${col}</td>

@@ -64,7 +64,7 @@ td {
     font-weight: bold;
 }
 
-.notes, .visible_notes, .hide_notes, .select_notes {
+.notes, .visible_notes, .hide_notes, .select_notes_light, .select_notes_dark {
     margin-left: 0;
     margin-right: 0;
     width: 100%;
@@ -89,6 +89,18 @@ td {
 
 .select_note_cell {
     cursor: pointer;
+}
+
+.select_notes_light td {
+    color: #3856f5;
+}
+
+.select_notes_dark td {
+    color: #2b2bcd;
+}
+
+.select_notes td {
+    color: white;
 }
 
 [class="select_note_cell"]:hover {
