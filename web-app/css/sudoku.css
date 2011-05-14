@@ -84,11 +84,11 @@ td {
     border: 0 none;
     width: 33%;
     height: 33%;
-    padding: 5px;
 }
 
 .select_note_cell {
     cursor: pointer;
+    padding: 5px;
 }
 
 .select_notes_light td {
