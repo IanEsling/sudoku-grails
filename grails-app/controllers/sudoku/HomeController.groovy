@@ -4,6 +4,7 @@ class HomeController {
 
     def clear = {
         session.board = null
+        session.originalBoard = null
         render (view: "index")
     }
 

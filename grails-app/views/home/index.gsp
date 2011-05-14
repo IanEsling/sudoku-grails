@@ -69,9 +69,9 @@
             var col;
             for (row = 1; row <= 9; row++) {
                 for (col = 1; col <= 9; col++) {
-                    var tableName = "table"+row+col;
+                    var tableName = "table" + row + col;
                     if ($(tableName) == null) {
-                        board = board + $(row.toString()+col.toString()).innerHTML;
+                        board = board + $(row.toString() + col.toString()).innerHTML;
                     } else {
                         board = board + ".";
                     }
@@ -99,24 +99,24 @@
     <g:render template="newBoard"/>
 </div>
 
-<div class="notes_link" <g:if test="${session.board == null}">style="display:none"</g:if>>
+<div class="notes_link">
     <p>
-        <g:if test="${session.board != null && !session.board.solved}">
-            <g:remoteLink action="clear" update="mainContainer">
+        <g:if test="${session.board != null}">
+            <g:link action="clear">
                 Start new board
-            </g:remoteLink>
+            </g:link>
+        </g:if>
+        <g:if test="${session.board != null && !session.board.solved}">
             <g:remoteLink action="solve" update="mainContainer">
                 Click to solve a square
             </g:remoteLink>
+            <a id="showNotes" href="#">Show All Notes</a>
+            <a id="hideNotes" href="#">Hide All Notes</a>
         </g:if>
-        <a id="showNotes" href="#">Show All Notes</a>
-        <a id="hideNotes" href="#">Hide All Notes</a>
     </p>
-<p>
     <g:if test="${session.originalBoard != null}">
         <p>Playing original board of: <span style="font-size:large;font-family:monospace">${session.originalBoard}</span></p>
     </g:if>
-</p>
 </div>
 </body>
 </html>
