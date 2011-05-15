@@ -82,8 +82,8 @@
         }
 
         document.observe("dom:loaded", function() {
-            $("showNotes").observe('click', showNotes);
-            $("hideNotes").observe('click', hideNotes);
+//            $("showNotes").observe('click', showNotes);
+//            $("hideNotes").observe('click', hideNotes);
             hideNotes();
         }
                 )
@@ -99,25 +99,14 @@
     <g:render template="newBoard"/>
 
 </div>
-<div class="notes_link">
-    <p>
-        <g:if test="${session.board != null && !session.board.solved}">
-            <g:remoteLink action="solve" update="mainContainer">
-                Click to solve a square
-            </g:remoteLink>
-            <a id="showNotes" href="#">Show All Notes</a>
-            <a id="hideNotes" href="#">Hide All Notes</a>
-        </g:if>
-    </p>
+
+<div style="margin-top: 25px; width:100%; float: left;">
     <g:if test="${session.originalBoard != null}">
         <p>Playing original board of: <span style="font-size:large;font-family:monospace">${session.originalBoard}</span></p>
     </g:if>
-</div>
-
-<div style="width:100%; float: left;">
     <g:form name="newBoardForm" url="[controller:'home',action:'newBoard']">
         Enter New Board:
-        <g:textField class="new_board" name="newBoardString" size="81"/>
+        <g:textField name="newBoardString" size="81"/>
         <g:submitButton name="Submit" value="Submit"/>
     </g:form>
 </div>

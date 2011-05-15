@@ -1,7 +1,7 @@
-<div class="new_board">
-    <g:if test="${session.board != null}">
+<g:if test="${session.board != null}">
+    <div class="new_board">
         <g:link action="clear">
             Start new board
         </g:link>
-    </g:if>
-</div>
+    </div>
+</g:if>

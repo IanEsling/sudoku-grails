@@ -186,8 +186,13 @@ a:hover {
     cursor: pointer;
 }
 
+.new_board {
+    width: 100%;
+    height: 80px;
+}
+
 .new_board a {
-    float: right;
+    float: left;
     margin-top: 10px;
     margin-bottom:20px;
 }
