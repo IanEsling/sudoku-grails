@@ -78,7 +78,7 @@
                 }
             }
             $('newBoardString').value = board;
-            $('newBoard').submit();
+            $('newBoardForm').submit();
         }
 
         document.observe("dom:loaded", function() {
@@ -97,15 +97,10 @@
 <div id="mainContainer">
     <g:render template="board"/>
     <g:render template="newBoard"/>
-</div>
 
+</div>
 <div class="notes_link">
     <p>
-        <g:if test="${session.board != null}">
-            <g:link action="clear">
-                Start new board
-            </g:link>
-        </g:if>
         <g:if test="${session.board != null && !session.board.solved}">
             <g:remoteLink action="solve" update="mainContainer">
                 Click to solve a square
@@ -117,6 +112,14 @@
     <g:if test="${session.originalBoard != null}">
         <p>Playing original board of: <span style="font-size:large;font-family:monospace">${session.originalBoard}</span></p>
     </g:if>
+</div>
+
+<div style="width:100%; float: left;">
+    <g:form name="newBoardForm" url="[controller:'home',action:'newBoard']">
+        Enter New Board:
+        <g:textField class="new_board" name="newBoardString" size="81"/>
+        <g:submitButton name="Submit" value="Submit"/>
+    </g:form>
 </div>
 </body>
 </html>

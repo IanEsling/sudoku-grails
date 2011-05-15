@@ -120,18 +120,18 @@ td {
 }
 
 .report {
-    float: right;
-    width: 40%;
+    margin-left: 40px;
     margin-right: 20px;
+}
+
+.reports {
+    float: right;
+    width: 50%;
 }
 
 .report li {
     list-style: none;
     margin-bottom: 15px;
-}
-
-.new_board {
-    width: 50%;
 }
 
 .parp {
@@ -161,7 +161,6 @@ a:hover {
 
 .notes_link {
     float: left;
-    width: 60%;
     margin-top: 15px;
 }
 
@@ -185,4 +184,10 @@ a:hover {
 
 .pointer {
     cursor: pointer;
+}
+
+.new_board a {
+    float: right;
+    margin-top: 10px;
+    margin-bottom:20px;
 }

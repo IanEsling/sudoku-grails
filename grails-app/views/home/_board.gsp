@@ -60,8 +60,7 @@
             notesVisible();
         </script>
     </div>
-
-    <div <g:if test="${report == null}">style="display:none"</g:if>>
+    <div class="reports" <g:if test="${report == null}">style="display:none"</g:if>>
         <div id="solvedCellReport" class="report">
             <div id="spinner" style="display:none;">
                 <img src="${createLinkTo(dir: 'images', file: 'spinner.gif')}" border="0" alt="Loading..." title="Loading..." width="32" height="32"/>

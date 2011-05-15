@@ -1,6 +1,5 @@
 <g:if test="${session.board == null}">
     <div id="newBoard">
-
         <table>
             <g:each in="${1..9}" var="row" status="rowIndex">
                 <tr <g:if test="${rowIndex == 2 || rowIndex == 5}">class="row_divider"</g:if>>
