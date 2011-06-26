@@ -69,8 +69,9 @@
                     <g:remoteLink action="solve" update="mainContainer">
                         Click to solve a square
                     </g:remoteLink>
-                    <a id="showNotes" onclick="showNotes()" href="#">Show All Notes</a>
-                    <a id="hideNotes" onclick="hideNotes()" href="#">Hide All Notes</a>
+
+                    <a id="showNotes" onclick="showNotes()" href="#" style="display:none;">Show All Notes</a>
+                    <a id="hideNotes" onclick="hideNotes()" href="#" style="display:none;">Hide All Notes</a>
                 </g:if>
             </p>
         </div>

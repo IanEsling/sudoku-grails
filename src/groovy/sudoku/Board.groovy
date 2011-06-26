@@ -2,6 +2,7 @@ package sudoku
 
 import com.google.common.collect.Lists
 import com.google.common.collect.Sets
+import com.sun.org.apache.regexp.internal.RE
 
 class Board implements Serializable {
 
@@ -11,9 +12,12 @@ class Board implements Serializable {
     final Set<Region> regions
 
     Board(String board) {
+        if (board.length() != 81) {
+            throw new BoardCreationException("Need exactly 81 characters to create a new board, only ${board.length()} provided: ${board}")
+        }
         //TODO: accept things other than .s as empty squares
         if (!(board ==~ "[/.1-9]{81}")) {
-            throw new RuntimeException("trying to create board with invalid string: $board")
+            throw new BoardCreationException("Only 1-9 and . (for empty square) allowed to create a new board: $board")
         }
         cells = Sets.newTreeSet()
         (1..9).each {row ->
@@ -50,7 +54,7 @@ class Board implements Serializable {
                 || regions.size() != 9
                 || !allRegionsAreValid()
         ) {
-            throw new RuntimeException("tried to create invalid board:\n" +
+            throw new InvalidBoardException("tried to create invalid board:\n" +
                     "rows:${rows}\n" +
                     "columns:${columns}\n" +
                     "${toString()}")
