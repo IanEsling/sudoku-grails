@@ -34,19 +34,22 @@
                                     <table class="hide_notes">
                                         <tr class="note_row">
                                             <g:each in="[1,2,3]" var="col">
-                                                <td class="note_cell"><g:if test="${cell.values.contains(col)}">${col}</g:if>
+                                                <td class="note_cell"><g:if
+                                                        test="${cell.values.contains(col)}">${col}</g:if>
                                                     <g:else>&nbsp;</g:else></td>
                                             </g:each>
                                         </tr>
                                         <tr class="note_row">
                                             <g:each in="[4,5,6]" var="col">
-                                                <td class="note_cell"><g:if test="${cell.values.contains(col)}">${col}</g:if>
+                                                <td class="note_cell"><g:if
+                                                        test="${cell.values.contains(col)}">${col}</g:if>
                                                     <g:else>&nbsp;</g:else></td>
                                             </g:each>
                                         </tr>
                                         <tr class="note_row">
                                             <g:each in="[7,8,9]" var="col">
-                                                <td class="note_cell"><g:if test="${cell.values.contains(col)}">${col}</g:if>
+                                                <td class="note_cell"><g:if
+                                                        test="${cell.values.contains(col)}">${col}</g:if>
                                                     <g:else>&nbsp;</g:else></td>
                                             </g:each>
                                         </tr>
@@ -58,6 +61,9 @@
                 </g:each>
             </table>
             <script type="text/javascript">
+                if (${failed}){
+                    $("notesVisible").checked = true;
+                }
                 notesVisible();
             </script>
         </div>
@@ -65,7 +71,7 @@
 
         <div class="notes_link">
             <p>
-                <g:if test="${session.board != null && !session.board.solved}">
+                <g:if test="${session.board != null && !session.board.solved && !failed}">
                     <g:remoteLink action="solve" update="mainContainer">
                         Click to solve a square
                     </g:remoteLink>
@@ -80,15 +86,23 @@
     <div class="reports" <g:if test="${report == null}">style="display:none"</g:if>>
         <div id="solvedCellReport" class="report">
             <div id="spinner" style="display:none;">
-                <img src="${createLinkTo(dir: 'images', file: 'spinner.gif')}" border="0" alt="Loading..." title="Loading..." width="32" height="32"/>
+                <img src="${createLinkTo(dir: 'images', file: 'spinner.gif')}" border="0" alt="Loading..."
+                     title="Loading..." width="32" height="32"/>
             </div>
+
             <p style="font-weight: bold;">Notes for solved square :</p>
             <ul>
-                <g:each in="${report}" var="line">
-                    <li>${line}</li>
-                </g:each>
+                <g:if test="${failed}">
+                    <li>${report}</li>
+                </g:if>
+                <g:else>
+                    <g:each in="${report}" var="line">
+                        <li>${line}</li>
+                    </g:each>
+                </g:else>
             </ul>
         </div>
+
         <div id="cellNotes" class="report">
 
         </div>
