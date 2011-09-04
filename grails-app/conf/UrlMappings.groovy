@@ -1,3 +1,5 @@
+import sudoku.BoardCreationException
+
 class UrlMappings {
 
 	static mappings = {
@@ -6,8 +8,20 @@ class UrlMappings {
 				// apply constraints here
 			}
 		}
-
 		"/"(controller: "home")
+        "500"(controller: "home", exception: BoardCreationException)
 		"500"(view:'/error')
 	}
 }
+
+//static mappings = {
+//   "403"(view: "/errors/forbidden")
+//   "404"(view: "/errors/notFound")
+//   "500"(controller: "errors", action: "illegalArgument",
+//         exception: IllegalArgumentException)
+//   "500"(controller: "errors", action: "nullPointer",
+//         exception: NullPointerException)
+//   "500"(controller: "errors", action: "customException",
+//         exception: MyException)
+//   "500"(view: "/errors/serverError")
+//}

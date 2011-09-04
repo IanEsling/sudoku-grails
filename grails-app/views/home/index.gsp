@@ -56,7 +56,7 @@
         }
 
         function selectForCell(number, cell) {
-            var html = $(cell).innerHTML;
+            var html = '<div>' + $(cell).innerHTML + '</div>';
             $(cell).update(number);
             $(cell).observe('click', function(event) {
                 event.findElement().update(html);

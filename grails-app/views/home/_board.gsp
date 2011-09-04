@@ -61,7 +61,7 @@
                 </g:each>
             </table>
             <script type="text/javascript">
-                if (${failed}){
+                if (${failed!=null}){
                     $("notesVisible").checked = true;
                 }
                 notesVisible();
@@ -71,7 +71,7 @@
 
         <div class="notes_link">
             <p>
-                <g:if test="${session.board != null && !session.board.solved && !failed}">
+                <g:if test="${session.board != null && !session.board.solved && failed==null}">
                     <g:remoteLink action="solve" update="mainContainer">
                         Click to solve a square
                     </g:remoteLink>
