@@ -1,4 +1,5 @@
 import sudoku.BoardCreationException
+import sudoku.InvalidBoardException
 
 class UrlMappings {
 
@@ -8,8 +9,9 @@ class UrlMappings {
 				// apply constraints here
 			}
 		}
-		"/"(controller: "home")
-        "500"(controller: "home", exception: BoardCreationException)
+		"/"(controller: "home", action: "about")
+        "500"(controller: "home", action: "index", exception: BoardCreationException)
+        "500"(controller: "home", action: "index", exception: InvalidBoardException)
 		"500"(view:'/error')
 	}
 }

@@ -4,6 +4,10 @@ import javax.servlet.http.HttpSession
 
 class HomeController {
 
+    def about = {
+        render(view: "about")
+    }
+
     def clear = {
         clearSession(session)
         render(view: "index")
