@@ -115,8 +115,9 @@ td {
 }
 
 #newBoard {
-    float: left;
+    /*float: left;*/
     width: 70%;
+    margin: auto;
 }
 
 .report {

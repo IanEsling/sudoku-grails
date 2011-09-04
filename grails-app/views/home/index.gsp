@@ -104,7 +104,7 @@
     <g:if test="${session.originalBoard != null}">
         <p>Playing original board of: <span style="font-size:large;font-family:monospace">${session.originalBoard}</span></p>
     </g:if>
-    <g:form name="newBoardForm" url="[controller:'home',action:'newBoard']">
+    <g:form name="newBoardForm" url="[controller:'home',action:'newBoard']" style="display: none;">
         Enter New Board:
         <g:textField name="newBoardString" size="81"/>
         <g:submitButton name="Submit" value="Submit"/>
