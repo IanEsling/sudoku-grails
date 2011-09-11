@@ -92,7 +92,7 @@
 <body>
 <g:hiddenField id="notesVisible" name="notesVisible" checked="false"/>
 
-<g:render template="newBoardTextField"/>
+<g:render template="navigation"/>
 
 <div id="mainContainer">
     <g:render template="board"/>

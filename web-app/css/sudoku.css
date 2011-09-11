@@ -34,7 +34,7 @@ tr {
 
 .cell_divider {
     /*border-right-color:black;*/
-    border-right-width:2px
+    border-right-width: 2px
 }
 
 .original_cell {
@@ -80,7 +80,7 @@ td {
 }
 
 .note_cell, .select_note_cell {
-    font-size:12px;
+    font-size: 12px;
     border: 0 none;
     width: 33%;
     height: 33%;
@@ -112,13 +112,26 @@ td {
 #board {
     float: left;
     width: 50%;
+    margin-top: 30px;
 }
 
 #newBoard {
     /*float: left;*/
-    width: 70%;
+    width: 860px;
+    height: 680px;
     margin: auto;
 }
+
+table.chooseNewBoard {
+    width: 860px;
+    height: 680px;
+}
+
+.newBoardCell {
+    width: 92px;
+    height: 72px;
+}
+
 
 .report {
     margin-left: 40px;
@@ -138,6 +151,7 @@ td {
 .parp {
     background-color: #f04c3b;
 }
+
 a {
     margin: 20px;
     padding: 15px;
@@ -145,15 +159,15 @@ a {
     color: white;
     font-weight: bold;
     text-decoration: none;
-    text-shadow: 0 1px 1px rgba(0,0,0,.3);
+    text-shadow: 0 1px 1px rgba(0, 0, 0, .3);
 
     -moz-border-radius: 8px;
     border-radius: 8px;
     background: -webkit-gradient(linear, left top, left bottom, from(#f04c3b), to(#cd2323));
-    background: -moz-linear-gradient(top,  #f04c3b,  #cd2323);
-    -webkit-box-shadow: 0 1px 2px rgba(0,0,0,.2);
-	-moz-box-shadow: 0 1px 2px rgba(0,0,0,.2);
-	box-shadow: 0 1px 2px rgba(0,0,0,.2);
+    background: -moz-linear-gradient(top, #f04c3b, #cd2323);
+    -webkit-box-shadow: 0 1px 2px rgba(0, 0, 0, .2);
+    -moz-box-shadow: 0 1px 2px rgba(0, 0, 0, .2);
+    box-shadow: 0 1px 2px rgba(0, 0, 0, .2);
 }
 
 a:hover {
@@ -187,19 +201,32 @@ a:hover {
     cursor: pointer;
 }
 
-.new_board {
+.navigation {
     width: 100%;
-    height: 80px;
+    height: 40px;
+    margin-left: -8px;
+    margin-top: -8px;
+    background-color: black;
 }
 
-.new_board a {
+.navigation a {
     float: left;
     margin-top: 10px;
-    margin-bottom:20px;
+    margin-bottom: 20px;
+    padding: 0px;
+    font-weight: normal;
+    text-shadow: 0 1px 1px rgba(0, 0, 0, .3);
+
+    -moz-border-radius: none;
+    border-radius: 0;
+    background: none;
+    -webkit-box-shadow: none;
+    -moz-box-shadow: none;
+    box-shadow: none;
 }
 
 .exception {
-    margin:  20;
+    margin: 20;
     color: red;
 }
 

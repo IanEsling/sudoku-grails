@@ -15,7 +15,7 @@
                         <td id="${row}${col}"
                             onmouseover="showTable('table${row}${col}')"
                             onmouseout="hideTable('table${row}${col}')"
-                            class="<g:if test='${divider}'>cell_divider</g:if>
+                            class="newBoardCell <g:if test='${divider}'>cell_divider</g:if>
                             <g:if test='${light}'>light</g:if><g:else>dark</g:else>
                             ">
                             <table id="table${row}${col}"
