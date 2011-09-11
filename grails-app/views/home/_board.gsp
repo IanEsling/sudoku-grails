@@ -16,10 +16,13 @@
                             <g:if test='${originalCell}'>original_cell</g:if>
                             <g:if test='${light}'>light</g:if><g:else>dark</g:else>
                             <g:if test="${cell.values.size() > 1}">
-                                    <g:if test='${light}'> light_with_notes </g:if><g:else> dark_with_notes </g:else>
-
+                                <g:if test='${light}'>light_with_notes</g:if><g:else>dark_with_notes</g:else>
+                            </g:if>
+                            "
+                                <g:if test="${cell.values.size() > 1}">
+                                    onclick="report('${cell.row}_${cell.column}')"
                                 </g:if>
-                            "  >
+                            >
                                 <g:if test="${cell.values.size() == 1}">${cell.values[0]}
                                 </g:if>
                                 <g:else>
@@ -63,7 +66,7 @@
                 </g:each>
             </table>
             <script type="text/javascript">
-                if (${failed!=null}){
+                if (${failed!=null}) {
                     $("notesVisible").checked = true;
                 }
                 notesVisible();

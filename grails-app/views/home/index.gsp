@@ -13,14 +13,6 @@
             }
         }
 
-        function hasNotes(cell) {
-            $(cell).addClassName("board_cell_with_notes");
-        }
-
-        function noNotes(cell) {
-            $(cell).removeClassName("board_cell_with_notes");
-        }
-
         function showNotes(event) {
             $$("table.hide_notes").each(function(element) {
                 element.className = "visible_notes";
