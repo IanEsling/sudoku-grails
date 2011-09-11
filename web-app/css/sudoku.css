@@ -27,6 +27,11 @@ table {
     border-collapse: collapse;
 }
 
+#board table {
+    width: 500px;
+    height: 500px;
+}
+
 tr {
     border: 0 solid gray;
     border-bottom-width: 1px;
