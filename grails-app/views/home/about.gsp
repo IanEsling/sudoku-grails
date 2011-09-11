@@ -14,7 +14,7 @@
     Click the button to get started.</h3>
 
     <div style="margin-top: 60px;">
-        <a href="home/index">Create a new puzzle</a>
+        <a href="home/clear">Create a new puzzle</a>
     </div>
 </div>
 

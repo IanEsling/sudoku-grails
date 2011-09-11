@@ -90,7 +90,7 @@
                      title="Loading..." width="32" height="32"/>
             </div>
 
-            <p style="font-weight: bold;">Notes for solved square :</p>
+            <p>Notes for solved square :</p>
             <ul>
                 <g:if test="${failed}">
                     <li>${report}</li>

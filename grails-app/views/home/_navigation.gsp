@@ -1,10 +1,16 @@
 <g:if test="${session.board != null}">
     <div class="navigation">
-        <g:link action="clear">
-            Start new board
-        </g:link>
-        <g:link action="about">
-            About
-        </g:link>
+        <ul>
+            <li>
+                <g:link action="clear">
+                    Start new board
+                </g:link>
+            </li>
+            <li>
+                <g:link action="about">
+                    About
+                </g:link>
+            </li>
+        </ul>
     </div>
 </g:if>
