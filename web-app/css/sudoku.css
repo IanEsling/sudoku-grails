@@ -121,15 +121,13 @@ td {
 }
 
 #newBoard {
-    /*float: left;*/
     width: 860px;
     height: 680px;
     margin: auto;
 }
 
-table.chooseNewBoard {
-    width: 860px;
-    height: 680px;
+.chooseNewBoard {
+    margin-top: 25px;
 }
 
 .newBoardCell {

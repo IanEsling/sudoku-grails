@@ -5,7 +5,7 @@
                 ${exception}
             </div>
         </g:if>
-        <table>
+        <table class="chooseNewBoard">
             <g:each in="${1..9}" var="row" status="rowIndex">
                 <tr <g:if test="${rowIndex == 2 || rowIndex == 5}">class="row_divider"</g:if>>
                     <g:each in="${1..9}" var="col" status="cellIndex">
