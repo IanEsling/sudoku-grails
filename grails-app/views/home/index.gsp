@@ -17,8 +17,12 @@
             $$("table.hide_notes").each(function(element) {
                 element.className = "visible_notes";
             });
-            $("hideNotes").show();
-            $("showNotes").hide();
+            if ($("hideNotes") != null) {
+                $("hideNotes").show();
+            }
+            if ($("showNotes") != null) {
+                $("showNotes").hide();
+            }
             $("notesVisible").checked = true;
         }
 
@@ -26,8 +30,12 @@
             $$("table.visible_notes").each(function(element) {
                 element.className = "hide_notes";
             });
-            $("showNotes").show();
-            $("hideNotes").hide();
+            if ($("showNotes") != null) {
+                $("showNotes").show();
+            }
+            if ($("hideNotes") != null) {
+                $("hideNotes").hide();
+            }
             $("notesVisible").checked = false;
         }
 
@@ -76,11 +84,12 @@
         document.observe("dom:loaded", function() {
 //            $("showNotes").observe('click', showNotes);
 //            $("hideNotes").observe('click', hideNotes);
-            hideNotes();
-        }
-                )
+                    hideNotes();
+                }
+        )
     </script>
 </head>
+
 <body>
 <g:hiddenField id="notesVisible" name="notesVisible" checked="false"/>
 
@@ -94,7 +103,8 @@
 
 <div style="margin-top: 25px; width:100%; float: left;">
     <g:if test="${session.originalBoard != null}">
-        <p>Playing original board of: <span style="font-size:large;font-family:monospace">${session.originalBoard}</span></p>
+        <p>Playing original board of: <span
+                style="font-size:large;font-family:monospace">${session.originalBoard}</span></p>
     </g:if>
     <g:form name="newBoardForm" url="[controller:'home',action:'newBoard']" style="display: none;">
         Enter New Board:
