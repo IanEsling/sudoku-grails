@@ -46,7 +46,7 @@
         </table>
     </div>
 
-    <div style="margin-top: 30px; margin-left: auto; margin-right: auto; width:10%">
-        <a onclick="go()" href="#" style="margin-left: 50px;">Go!</a>
+    <div style="margin-top: 0; margin-left: auto; margin-right: auto; width:10%; padding-top: 50px;">
+        <a style="margin: 0;" onclick="go()" href="#">Go!</a>
     </div>
 </g:if>

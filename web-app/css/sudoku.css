@@ -27,7 +27,7 @@ table {
     border-collapse: collapse;
 }
 
-#board table {
+#board > table {
     width: 500px;
     height: 500px;
 }
@@ -196,14 +196,14 @@ a:hover {
     padding: 3px;
 }
 
-.light_with_notes:hover, .dark_with_notes:hover {
+td.light_with_notes:hover, td.dark_with_notes:hover {
     cursor: pointer;
         /* fallback, somewhere in between light and dark */
         background-color: #332ed6;
         /* Firefox 3.6+ */
 }
 
-.dark_with_notes:hover {
+td.dark_with_notes:hover {
     background: -moz-radial-gradient(circle, #3856f5, #2b2bcd);
     /* Safari 4-5, Chrome 1-9 */
     background: -webkit-gradient(radial, center center, 0, center center, 50, from(#3856f5), to(#2b2bcd));
@@ -212,7 +212,7 @@ a:hover {
     /* Opera cannot do radial gradients yet */
 }
 
-.light_with_notes:hover {
+td.light_with_notes:hover {
     background: -moz-radial-gradient(circle, #2b2bcd, #3856f5);
     /* Safari 4-5, Chrome 1-9 */
     background: -webkit-gradient(radial, center center, 0, center center, 50, from(#2b2bcd), to(#3856f5));
@@ -231,10 +231,6 @@ a:hover {
 }
 
 .navigation a {
-    float: left;
-    margin-top: 10px;
-    margin-bottom: 20px;
-    padding: 0px;
     font-weight: normal;
     text-shadow: 0 1px 1px rgba(0, 0, 0, .3);
 
@@ -248,9 +244,12 @@ a:hover {
 
 .navigation ul {
     height: 40px;
+    margin: 0;
 }
 .navigation li {
     display: inline;
+    float: left;
+    padding-top: 10px;
 }
 
 .exception {
