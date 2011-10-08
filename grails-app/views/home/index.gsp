@@ -2,6 +2,7 @@
 <html>
 <head>
     <title>Teach Me Sudoku</title>
+    %{--<link rel="stylesheet" href="${resource(dir: 'css', file: 'bootstrap.css')}"/>--}%
     <link rel="stylesheet" href="${resource(dir: 'css', file: 'sudoku.css')}"/>
     <g:javascript library="prototype"/>
     <script type="text/javascript">

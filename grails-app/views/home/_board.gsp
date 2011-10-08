@@ -77,12 +77,12 @@
         <div class="notes_link">
             <p>
                 <g:if test="${session.board != null && !session.board.solved && failed==null}">
-                    <g:remoteLink action="solve" update="mainContainer">
+                    <g:remoteLink class="btn primary" action="solve" update="mainContainer">
                         Click to solve a square
                     </g:remoteLink>
 
-                    <a id="showNotes" onclick="showNotes()" href="#" style="display:none;">Show All Notes</a>
-                    <a id="hideNotes" onclick="hideNotes()" href="#" style="display:none;">Hide All Notes</a>
+                    <a id="showNotes" onclick="showNotes()" href="#" class="btn primary" style="display:none;">Show All Notes</a>
+                    <a id="hideNotes" onclick="hideNotes()" href="#" class="btn primary" style="display:none;">Hide All Notes</a>
                 </g:if>
             </p>
         </div>
