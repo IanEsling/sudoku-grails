@@ -92,8 +92,8 @@ td {
 .note_cell, .select_note_cell {
     font-size: 12px;
     border: 0 none;
-    width: 33%;
-    height: 33%;
+    width: 15px;
+    height: 14px;
 }
 
 .select_note_cell {
@@ -125,7 +125,7 @@ td {
     margin-top: 30px;
 }
 
-#board > td {
+td.light, td.dark {
     height: 58px;
     width: 58px;
 }
