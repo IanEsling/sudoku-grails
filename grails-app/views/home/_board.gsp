@@ -1,7 +1,7 @@
 <g:if test="${session.board != null}">
-    <div id="board">
+    <div id="boardContainer">
         <div>
-            <table>
+            <table id="board">
                 <g:each in="${session.board.rows}" var="row" status="rowIndex">
                     <tr <g:if test="${rowIndex == 2 || rowIndex == 5}">class="row_divider"</g:if>>
                         <g:each in="${row.cells}" var="cell" status="cellIndex">

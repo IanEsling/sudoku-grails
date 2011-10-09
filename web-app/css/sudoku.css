@@ -27,7 +27,7 @@ table {
     border-collapse: collapse;
 }
 
-#board > table {
+#boardContainer > table {
     width: 500px;
     height: 500px;
 }
@@ -119,10 +119,15 @@ td {
     color: #ffff00;
 }
 
-#board {
+#boardContainer {
     float: left;
     width: 50%;
     margin-top: 30px;
+}
+
+#board td {
+    height: 58px;
+    width: 58px;
 }
 
 #newBoard {
@@ -143,6 +148,7 @@ td {
 .report {
     margin-left: 40px;
     margin-right: 20px;
+    margin-top: 30px;
 }
 
 .reports {
