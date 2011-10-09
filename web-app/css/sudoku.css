@@ -125,7 +125,7 @@ td {
     margin-top: 30px;
 }
 
-#board td {
+#board > td {
     height: 58px;
     width: 58px;
 }
