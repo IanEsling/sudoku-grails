@@ -54,5 +54,4 @@ class UniqueToUnitSolver {
         }
         return solved
     }
-
 }

@@ -2,7 +2,6 @@ package sudoku
 
 import com.google.common.collect.Lists
 import com.google.common.collect.Sets
-import com.sun.org.apache.regexp.internal.RE
 
 class Board implements Serializable {
 
@@ -47,12 +46,9 @@ class Board implements Serializable {
     }
 
     private def validateBoard() {
-        if (!allColumnsAreValid()
-                || !allRowsAreValid()
-                || rows.size() != 9
-                || columns.size() != 9
-                || regions.size() != 9
-                || !allRegionsAreValid()
+        if (!cellsForUnitsAreValid(columns)
+                || !cellsForUnitsAreValid(rows)
+                || !cellsForUnitsAreValid(regions)
         ) {
             throw new InvalidBoardException("tried to create invalid board:\n" +
                     "rows:${rows}\n" +
@@ -67,21 +63,9 @@ class Board implements Serializable {
         }
     }
 
-    boolean allRegionsAreValid() {
-        regions.every {region ->
-            unitCellsAreValid region
-        }
-    }
-
-    boolean allRowsAreValid() {
-        rows.every {row ->
-            unitCellsAreValid row
-        }
-    }
-
-    boolean allColumnsAreValid() {
-        columns.every {column ->
-            unitCellsAreValid column
+    boolean cellsForUnitsAreValid(Set<? extends Unit> units) {
+        units.every {unit ->
+            unitCellsAreValid unit
         }
     }
 
@@ -90,7 +74,9 @@ class Board implements Serializable {
         Set<Integer> values = Sets.newHashSet()
         unit.cells.each {cell ->
             if (cell.values.size() == 1) {
-                if (values.any {it == cell.values[0]}) {valid = false}
+                if (values.any {it == cell.values[0]}) {
+                    valid = false
+                }
                 else {
                     values.add cell.values[0]
                 }
@@ -203,6 +189,6 @@ class Board implements Serializable {
     }
 
     boolean isValid() {
-        return allColumnsAreValid() && allRegionsAreValid() && allRowsAreValid()
+        return cellsForUnitsAreValid(columns) && cellsForUnitsAreValid(regions) && cellsForUnitsAreValid(rows)
     }
 }

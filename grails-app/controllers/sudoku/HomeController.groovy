@@ -35,7 +35,7 @@ I'm always looking for ways to improve so this will be a big help, thankyou."""]
 
     def newBoard = {
         clearSession(session)
-        Board board = new Board(params.newBoardString)
+        Board board = new Board(params.board)
         session.putValue("board", board)
         session.putValue("originalCells", board.originalCells())
         session.putValue("originalBoard", board.asString())

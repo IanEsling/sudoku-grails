@@ -4,11 +4,8 @@ import sudoku.InvalidBoardException
 class UrlMappings {
 
 	static mappings = {
-		"/$controller/$action?/$id?"{
-			constraints {
-				// apply constraints here
-			}
-		}
+        "/board/$board"(controller: "home", action: "newBoard")
+		"/home/$action"(controller: "home")
 		"/"(controller: "home", action: "about")
         "500"(controller: "home", action: "index", exception: BoardCreationException)
         "500"(controller: "home", action: "index", exception: InvalidBoardException)

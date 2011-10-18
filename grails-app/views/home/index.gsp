@@ -78,13 +78,10 @@
                     }
                 }
             }
-            $('newBoardString').value = board;
-            $('newBoardForm').submit();
+            document.location.href = "/sudoku/board/" + board;
         }
 
         document.observe("dom:loaded", function() {
-//            $("showNotes").observe('click', showNotes);
-//            $("hideNotes").observe('click', hideNotes);
                     hideNotes();
                 }
         )
