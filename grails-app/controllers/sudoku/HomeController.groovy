@@ -19,6 +19,9 @@ class HomeController {
     }
 
     def solve = {
+        if (session.board == null) {
+            render(view: "newBoard")
+        }
         NakedPairsSolver solver = new NakedPairsSolver()
         def board = new Board(session.board.asString())
         def map
@@ -35,10 +38,12 @@ I'm always looking for ways to improve so this will be a big help, thankyou."""]
 
     def newBoard = {
         clearSession(session)
-        Board board = new Board(params.board)
-        session.putValue("board", board)
-        session.putValue("originalCells", board.originalCells())
-        session.putValue("originalBoard", board.asString())
+        if (params.board != null) {
+            Board board = new Board(params.board)
+            session.putValue("board", board)
+            session.putValue("originalCells", board.originalCells())
+            session.putValue("originalBoard", board.asString())
+        }
         render(view: "index")
     }
 
