@@ -78,7 +78,7 @@
                     }
                 }
             }
-            document.location.href = "/sudoku/board/" + board;
+            document.location.href = "${g.createLink(url: "/board/")}" + board ;
         }
 
         document.observe("dom:loaded", function() {
