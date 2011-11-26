@@ -72,7 +72,7 @@
                 for (col = 1; col <= 9; col++) {
                     var tableName = "table" + row + col;
                     if ($(tableName) == null) {
-                        board = board + $(row.toString() + col.toString()).innerHTML;
+                        board = board + $(row.toString() + col.toString()).innerText;
                     } else {
                         board = board + ".";
                     }
@@ -81,15 +81,15 @@
             document.location.href = "${g.createLink(url: "/board/")}" + board ;
         }
 
-        document.observe("dom:loaded", function() {
-                    hideNotes();
-                }
-        )
+//        document.observe("dom:loaded", function() {
+//                    hideNotes();
+//                }
+//        )
     </script>
 </head>
 
 <body>
-<g:hiddenField id="notesVisible" name="notesVisible" checked="false"/>
+<g:checkBox id="notesVisible" name="notesVisible" checked="false" style="display:none;"/>
 
 <g:render template="navigation"/>
 

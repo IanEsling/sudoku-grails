@@ -7,13 +7,11 @@
                         <g:each in="${row.cells}" var="cell" status="cellIndex">
                             <g:set var="divider" value="${cellIndex == 2 || cellIndex == 5}"/>
                             <g:set var="lastOneSolved" value="${cell.lastOneSolved}"/>
-                            <g:set var="originalCell" value="${session.originalCells.contains(cell)}"/>
                             <g:findAll in="${session.board.regions}" expr="${it.contains(cell)}">
                                 <g:set var="light" value="${it.regionNumber % 2 == 0}"/>
                             </g:findAll>
-                            <td id="${cell.row}x${cell.column}" class="<g:if test='${divider}'>cell_divider</g:if>
+                            <td id="${cell.row}${cell.column}" class="<g:if test='${divider}'>cell_divider</g:if>
                             <g:if test='${lastOneSolved}'>last_one_solved</g:if>
-                            <g:if test='${originalCell}'>original_cell</g:if>
                             <g:if test='${light}'>light</g:if><g:else>dark</g:else>
                             <g:if test="${cell.values.size() > 1}">
                                 <g:if test='${light}'>light_with_notes</g:if><g:else>dark_with_notes</g:else>
@@ -21,8 +19,7 @@
                             "
                                 <g:if test="${cell.values.size() > 1}">
                                     onclick="report('${cell.row}_${cell.column}')"
-                                </g:if>
-                            >
+                                </g:if>>
                                 <g:if test="${cell.values.size() == 1}">${cell.values[0]}
                                 </g:if>
                                 <g:else>
@@ -36,7 +33,7 @@
                                             </ul>
                                         </div>
                                     </div>
-                                    <table class="hide_notes">
+                                    <table id="table${cell.row}${cell.column}" class="hide_notes">
                                         <tr class="note_row">
                                             <g:each in="[1,2,3]" var="col">
                                                 <td class="note_cell"><g:if
@@ -65,24 +62,20 @@
                     </tr>
                 </g:each>
             </table>
-            <script type="text/javascript">
-                if (${failed!=null}) {
-                    $("notesVisible").checked = true;
-                }
-                notesVisible();
-            </script>
         </div>
 
 
         <div class="notes_link">
             <p>
                 <g:if test="${session.board != null && !session.board.solved && failed==null}">
-                    <g:remoteLink class="btn primary" action="solve" update="mainContainer">
+                    <a class="btn primary" onclick="go()" href="#">
                         Click to solve a square
-                    </g:remoteLink>
+                    </a>
 
-                    <a id="showNotes" onclick="showNotes()" href="#" class="btn primary" style="display:none;">Show All Notes</a>
-                    <a id="hideNotes" onclick="hideNotes()" href="#" class="btn primary" style="display:none;">Hide All Notes</a>
+                    <a id="showNotes" onclick="showNotes()" href="#" class="btn primary"
+                       style="display:none;">Show All Notes</a>
+                    <a id="hideNotes" onclick="hideNotes()" href="#" class="btn primary"
+                       style="display:none;">Hide All Notes</a>
                 </g:if>
             </p>
         </div>
@@ -90,10 +83,6 @@
 
     <div class="reports" <g:if test="${report == null}">style="display:none"</g:if>>
         <div id="solvedCellReport" class="report">
-            <div id="spinner" style="display:none;">
-                <img src="${createLinkTo(dir: 'images', file: 'spinner.gif')}" border="0" alt="Loading..."
-                     title="Loading..." width="32" height="32"/>
-            </div>
 
             <p>Notes for solved square :</p>
             <ul>
@@ -112,4 +101,11 @@
 
         </div>
     </div>
+
+    <script type="text/javascript">
+        if (${failed != null}) {
+            $("notesVisible").checked = true;
+        }
+        notesVisible();
+    </script>
 </g:if>
