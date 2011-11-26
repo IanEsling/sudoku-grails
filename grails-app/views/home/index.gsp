@@ -4,10 +4,10 @@
     <title>Teach Me Sudoku</title>
     %{--<link rel="stylesheet" href="${resource(dir: 'css', file: 'bootstrap.css')}"/>--}%
     <link rel="stylesheet" href="${resource(dir: 'css', file: 'sudoku.css')}"/>
-    <g:javascript library="prototype"/>
+    <g:javascript src="jquery/jquery-1.7.min.js"/>
     <script type="text/javascript">
         function notesVisible() {
-            if ($("notesVisible").checked) {
+            if ($("#notesVisible").checked) {
                 showNotes();
             } else {
                 hideNotes();
@@ -18,49 +18,50 @@
             $$("table.hide_notes").each(function(element) {
                 element.className = "visible_notes";
             });
-            if ($("hideNotes") != null) {
-                $("hideNotes").show();
+            if ($("#hideNotes") != null) {
+                $("#hideNotes").show();
             }
-            if ($("showNotes") != null) {
-                $("showNotes").hide();
+            if ($("#showNotes") != null) {
+                $("#showNotes").hide();
             }
-            $("notesVisible").checked = true;
+            $("#notesVisible").checked = true;
         }
 
         function hideNotes(event) {
             $$("table.visible_notes").each(function(element) {
                 element.className = "hide_notes";
             });
-            if ($("showNotes") != null) {
-                $("showNotes").show();
+            if ($("#showNotes") != null) {
+                $("#showNotes").show();
             }
-            if ($("hideNotes") != null) {
-                $("hideNotes").hide();
+            if ($("#hideNotes") != null) {
+                $("#hideNotes").hide();
             }
-            $("notesVisible").checked = false;
+            $("#notesVisible").checked = false;
         }
 
         function report(reportMe) {
-            $("cellNotes").update($(reportMe).innerHTML);
+            $("#cellNotes").update($(reportMe).innerHTML);
         }
 
         function showTable(table) {
-            if ($(table) != null) {
-                $(table).addClassName("select_notes");
+            if ($('#'+table) != null) {
+                $('#'+table).addClass("select_notes");
             }
         }
 
         function hideTable(table) {
-            if ($(table) != null) {
-                $(table).removeClassName("select_notes");
+            if ($('#'+table) != null) {
+                $('#'+table).removeClass("select_notes");
             }
         }
 
-        function selectForCell(number, cell) {
-            var html = '<div>' + $(cell).innerHTML + '</div>';
-            $(cell).update(number);
-            $(cell).observe('click', function(event) {
-                event.findElement().update(html);
+        function selectForCell(event, number, cell) {
+            event.stopPropagation();
+            var html = $('#'+cell).html();
+            $('#'+cell).html(number);
+            $('#'+cell).bind('click', function() {
+                $(this).html(html);
             });
         }
 
@@ -71,8 +72,8 @@
             for (row = 1; row <= 9; row++) {
                 for (col = 1; col <= 9; col++) {
                     var tableName = "table" + row + col;
-                    if ($(tableName) == null) {
-                        board = board + $(row.toString() + col.toString()).innerText;
+                    if ($('#'+tableName).size() == 0) {
+                        board = board + $('#' + row.toString() + col.toString()).html();
                     } else {
                         board = board + ".";
                     }

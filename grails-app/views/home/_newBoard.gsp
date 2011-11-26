@@ -23,19 +23,19 @@
                                 <tr class="note_row">
                                     <g:each in="[1,2,3]" var="cell">
                                         <td class="select_note_cell"
-                                            onclick="selectForCell(${cell}, '${row}${col}')">${cell}</td>
+                                            onclick="selectForCell(event, ${cell}, '${row}${col}')">${cell}</td>
                                     </g:each>
                                 </tr>
                                 <tr class="note_row">
                                     <g:each in="[4,5,6]" var="cell">
                                         <td class="select_note_cell"
-                                            onclick="selectForCell(${cell}, '${row}${col}')">${cell}</td>
+                                            onclick="selectForCell(event, ${cell}, '${row}${col}')">${cell}</td>
                                     </g:each>
                                 </tr>
                                 <tr class="note_row">
                                     <g:each in="[7,8,9]" var="cell">
                                         <td class="select_note_cell"
-                                            onclick="selectForCell(${cell}, '${row}${col}')">${cell}</td>
+                                            onclick="selectForCell(event, ${cell}, '${row}${col}')">${cell}</td>
                                     </g:each>
                                 </tr>
                             </table>
