@@ -15,8 +15,8 @@
         }
 
         function showNotes(event) {
-            $$("table.hide_notes").each(function(element) {
-                element.className = "visible_notes";
+            $("table.hide_notes").each(function() {
+                $(this).attr('class', 'visible_notes');
             });
             if ($("#hideNotes") != null) {
                 $("#hideNotes").show();
@@ -28,8 +28,8 @@
         }
 
         function hideNotes(event) {
-            $$("table.visible_notes").each(function(element) {
-                element.className = "hide_notes";
+            $("table.visible_notes").each(function() {
+                $(this).attr('class', 'hide_notes');
             });
             if ($("#showNotes") != null) {
                 $("#showNotes").show();
@@ -41,7 +41,7 @@
         }
 
         function report(reportMe) {
-            $("#cellNotes").update($(reportMe).innerHTML);
+            $("#cellNotes").html($('#'+reportMe).html());
         }
 
         function showTable(table) {
@@ -73,7 +73,7 @@
                 for (col = 1; col <= 9; col++) {
                     var tableName = "table" + row + col;
                     if ($('#'+tableName).size() == 0) {
-                        board = board + $('#' + row.toString() + col.toString()).html();
+                        board = board + $('#' + row.toString() + col.toString()).html().trim();
                     } else {
                         board = board + ".";
                     }
