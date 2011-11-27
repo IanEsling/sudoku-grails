@@ -2,8 +2,15 @@
     <div id="boardContainer">
         <div>
             <table id="board">
+                <thead>
+                <tr>
+                    <th></th>
+                    <g:each in="${1..9}" var="col"><th>${col}</th></g:each>
+                </tr>
+                </thead>
                 <g:each in="${session.board.rows}" var="row" status="rowIndex">
                     <tr <g:if test="${rowIndex == 2 || rowIndex == 5}">class="row_divider"</g:if>>
+                        <td class="firstColumn">${row.row}</td>
                         <g:each in="${row.cells}" var="cell" status="cellIndex">
                             <g:set var="divider" value="${cellIndex == 2 || cellIndex == 5}"/>
                             <g:set var="lastOneSolved" value="${cell.lastOneSolved}"/>

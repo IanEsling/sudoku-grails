@@ -140,6 +140,18 @@ td.light, td.dark {
     margin-top: 25px;
 }
 
+#board th {
+    border-right: 3px solid #ffebcd;
+}
+
+.firstColumn {
+    border-top: 3px solid #ffebcd;
+    border-left: 3px solid #ffebcd;
+    border-bottom: 3px solid #ffebcd;
+    color: black;
+    font-size: 16px;
+}
+
 .newBoardCell {
     width: 92px;
     height: 72px;
