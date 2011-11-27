@@ -35,7 +35,7 @@ class Cell implements Comparable<Cell> {
 
     void remove(Unit unit) {
         if (unit.solvedNumbers().intersect(values).size() > 0) {
-            report << "$row,$column ${values.toListString()} cannot be a ${makePresentable(unit.solvedNumbers().intersect(values))}" +
+            report << toString() + " ${values.toListString()} cannot be a ${makePresentable(unit.solvedNumbers().intersect(values))}" +
                     "in ${unit.toString()}"
             unit.solvedNumbers().intersect(values).each {
                 remove it
@@ -57,8 +57,7 @@ class Cell implements Comparable<Cell> {
 
     @Override
     String toString() {
-        //TODO: make row a char e.g. (5,7) becomes (E,7)
-        return "($row,$column)"
+        return "(" + Character.toChars(96 + row) + ",$column)"
     }
 
     int compareTo(Cell cell) {

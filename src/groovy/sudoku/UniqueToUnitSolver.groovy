@@ -39,7 +39,7 @@ class UniqueToUnitSolver {
                     otherUnit.cells.containsAll(unsolvedCells)
                 }.unsolvedCells.each {cell ->
                     if (!solved && !unsolvedCells.contains(cell) && cell.values.contains(number)) {
-                        cell.report << "${cell.row},${cell.column} " + cell.values +
+                        cell.report << "${cell} " + cell.values +
                                 " cannot be a $number because it can only exist in $unit in " + otherUnits.find {otherUnit ->
                                         otherUnit.cells.containsAll(unsolvedCells)
                                     }

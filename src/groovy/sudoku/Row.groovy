@@ -20,7 +20,7 @@ class Row extends AbstractUnit implements Comparable<Row> {
 
     @Override
     String toString() {
-        return "Row $row"
+        return "Row " + Character.toChars(96 + row)
     }
 
     int compareTo(Row t) {

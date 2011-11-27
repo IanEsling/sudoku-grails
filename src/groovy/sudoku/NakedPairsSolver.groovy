@@ -70,9 +70,9 @@ class NakedPairsSolver {
                                 def tempValues = cell.values.clone()
                                 cell.values.removeAll(pair.values.intersect(otherPair.values))
                                 report = cell.report
-                                report << "${cell.row},${cell.column} ${tempValues} cannot be a ${pair.values[0]} or a ${pair.values[1]} " +
-                                        "because they are both the only possible values in (${pair.row},${pair.column})" +
-                                        " and (${otherPair.row},${otherPair.column})"
+                                report << "${cell} ${tempValues} cannot be a ${pair.values[0]} or a ${pair.values[1]} " +
+                                        "because they are both the only possible values in ${pair}" +
+                                        " and ${otherPair}"
                                 if (cell.values.size() == 1) {
                                     report << "so it must be a ${cell.values[0]}"
                                     solved = true

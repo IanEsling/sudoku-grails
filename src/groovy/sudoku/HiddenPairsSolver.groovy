@@ -42,7 +42,7 @@ class HiddenPairsSolver {
                                     }
                                 }.size() == 0) {
                                     cells.each {cell ->
-                                        cell.report << "${cell.row},${cell.column} hidden pair of either " +
+                                        cell.report << "${cell} hidden pair of either " +
                                                 "${possible} or ${otherPossible} with " +
                                                 cells.find {
                                                     it != cell
