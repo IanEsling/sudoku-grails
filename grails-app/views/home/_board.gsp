@@ -111,7 +111,7 @@
 
     <script type="text/javascript">
         if (${failed != null}) {
-            $("notesVisible").checked = true;
+            $("#notesVisible").attr('checked', true);
         }
         notesVisible();
     </script>

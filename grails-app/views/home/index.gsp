@@ -7,7 +7,7 @@
     <g:javascript src="jquery/jquery-1.7.min.js"/>
     <script type="text/javascript">
         function notesVisible() {
-            if ($("#notesVisible").checked) {
+            if ($("#notesVisible").is(':checked')) {
                 showNotes();
             } else {
                 hideNotes();
@@ -41,26 +41,30 @@
         }
 
         function report(reportMe) {
-            $("#cellNotes").html($('#'+reportMe).html());
+            $("#cellNotes").html($('#' + reportMe).html());
         }
 
         function showTable(table) {
-            if ($('#'+table) != null) {
-                $('#'+table).addClass("select_notes");
+            if ($('#' + table) != null) {
+                $('#' + table).addClass("select_notes");
             }
         }
 
         function hideTable(table) {
-            if ($('#'+table) != null) {
-                $('#'+table).removeClass("select_notes");
+            if ($('#' + table) != null) {
+                $('#' + table).removeClass("select_notes");
             }
         }
 
         function selectForCell(event, number, cell) {
-            event.stopPropagation();
-            var html = $('#'+cell).html();
-            $('#'+cell).html(number);
-            $('#'+cell).bind('click', function() {
+            if ($.browser.msie) {
+                event.cancelBubble();
+            } else {
+                event.stopPropagation();
+            }
+            var html = $('#' + cell).html();
+            $('#' + cell).html(number);
+            $('#' + cell).bind('click', function() {
                 $(this).html(html);
             });
         }
@@ -72,20 +76,20 @@
             for (row = 1; row <= 9; row++) {
                 for (col = 1; col <= 9; col++) {
                     var tableName = "table" + row + col;
-                    if ($('#'+tableName).size() == 0) {
+                    if ($('#' + tableName).size() == 0) {
                         board = board + $('#' + row.toString() + col.toString()).html().trim();
                     } else {
                         board = board + ".";
                     }
                 }
             }
-            document.location.href = "${g.createLink(url: "/board/")}" + board ;
+            document.location.href = "${g.createLink(url: "/board/")}" + board;
         }
 
-//        document.observe("dom:loaded", function() {
-//                    hideNotes();
-//                }
-//        )
+        //        document.observe("dom:loaded", function() {
+        //                    hideNotes();
+        //                }
+        //        )
     </script>
 </head>
 
