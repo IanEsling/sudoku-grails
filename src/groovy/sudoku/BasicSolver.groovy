@@ -1,10 +1,10 @@
 package sudoku
 
-import com.google.common.collect.Lists
+import com.google.common.collect.Maps
 
 class BasicSolver {
 
-    List<String> report
+    Map<String, Collection<Cell>> report = Maps.newHashMap()
 
     boolean solveForBoard(Board board) {
         if (!solveUnits(board.regions)) {
@@ -22,7 +22,7 @@ class BasicSolver {
     }
 
     private boolean solveUnit(Unit unit) {
-        report = Lists.newArrayList()
+        report = Maps.newHashMap()
         boolean solved = false
         unit.cells.each {cell ->
             if (!solved && cell.values.size() > 1) {

@@ -1,5 +1,7 @@
 package sudoku
 
+import com.google.common.collect.Lists
+
 class HiddenPairsSolver {
 
     boolean solveForBoard(Board board) {
@@ -42,11 +44,13 @@ class HiddenPairsSolver {
                                     }
                                 }.size() == 0) {
                                     cells.each {cell ->
-                                        cell.report << "${cell} hidden pair of either " +
+                                        cell.report["${cell} hidden pair of either " +
                                                 "${possible} or ${otherPossible} with " +
                                                 cells.find {
                                                     it != cell
-                                                }.toString() + " in " + unit.toString()
+                                                }.toString() + " in " + unit.toString()] = Lists.newArrayList(cells.find {
+                                            it != cell
+                                        })
                                         cell.values.retainAll([possible, otherPossible])
                                     }
                                 }

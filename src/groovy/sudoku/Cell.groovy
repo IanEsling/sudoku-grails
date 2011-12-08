@@ -1,13 +1,14 @@
 package sudoku
 
 import com.google.common.collect.Lists
+import com.google.common.collect.Maps
 
 class Cell implements Comparable<Cell> {
 
     boolean lastOneSolved, originalCell
     final Integer row, column
     final List<Integer> values
-    List<String> report = Lists.newArrayList()
+    Map<String, Collection<Cell>> report = Maps.newHashMap()
 
     Cell(Integer row, Integer column, List<Integer> values) {
         this.row = row
@@ -25,7 +26,7 @@ class Cell implements Comparable<Cell> {
     void remove(Integer number) {
         values.removeAll(Lists.newArrayList(number))
         if (values.size() == 1) {
-            report << "so it must be a ${values[0]}"
+            report["so it must be a ${values[0]}"] = null
             lastOneSolved = true
         }
         if (values.size() == 0) {
@@ -35,8 +36,8 @@ class Cell implements Comparable<Cell> {
 
     void remove(Unit unit) {
         if (unit.solvedNumbers().intersect(values).size() > 0) {
-            report << toString() + " ${values.toListString()} cannot be a ${makePresentable(unit.solvedNumbers().intersect(values))}" +
-                    "in ${unit.toString()}"
+            report[toString() + "${values.toListString()} cannot be a ${makePresentable(unit.solvedNumbers().intersect(values))}" +
+                    "in ${unit.toString()}"] = unit.getCellsSolvedFor(values)
             unit.solvedNumbers().intersect(values).each {
                 remove it
             }
@@ -58,6 +59,10 @@ class Cell implements Comparable<Cell> {
     @Override
     String toString() {
         return "(" + Character.toChars(96 + row) + ",$column)"
+    }
+    
+    String getPageId(){
+        return "$row" + "$column"
     }
 
     int compareTo(Cell cell) {

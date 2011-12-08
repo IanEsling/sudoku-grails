@@ -4,6 +4,7 @@ import com.google.common.base.Predicate;
 import com.google.common.collect.Collections2;
 import com.google.common.collect.Sets;
 
+import java.util.Collection;
 import java.util.Set;
 
 public abstract class AbstractUnit implements Unit {
@@ -12,6 +13,16 @@ public abstract class AbstractUnit implements Unit {
 
     public UnitType getType() {
         return type;
+    }
+
+    @Override
+    public Set<Cell> getCellsSolvedFor(final Collection<Integer> values) {
+        return Sets.newHashSet(Collections2.filter(getCells(), new Predicate<Cell>() {
+            @Override
+            public boolean apply(Cell cell) {
+                return cell.getValues().size() == 1 && values.containsAll(cell.getValues());
+            }
+        }));
     }
 
     public Set<Cell> getUnsolvedCells(){

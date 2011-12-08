@@ -1,10 +1,10 @@
 package sudoku
 
-import com.google.common.collect.Lists
+import com.google.common.collect.Maps
 
 class UniqueToUnitSolver {
 
-    List<String> report
+    Map<String, Collection<Cell>> report
 
     boolean solveForBoard(Board board) {
         if (!solveUnits(board.rows, board.regions)) {
@@ -26,7 +26,7 @@ class UniqueToUnitSolver {
     }
 
     boolean solveUnit(Unit unit, Set<? extends Unit> otherUnits) {
-        report = Lists.newArrayList()
+        report = Maps.newHashMap()
         boolean solved = false
         unit.possibleNumbers().each {number ->
             def unsolvedCells = unit.unsolvedCells.findAll {cell ->
@@ -39,10 +39,12 @@ class UniqueToUnitSolver {
                     otherUnit.cells.containsAll(unsolvedCells)
                 }.unsolvedCells.each {cell ->
                     if (!solved && !unsolvedCells.contains(cell) && cell.values.contains(number)) {
-                        cell.report << "${cell} " + cell.values +
+                        cell.report["${cell} " + cell.values +
                                 " cannot be a $number because it can only exist in $unit in " + otherUnits.find {otherUnit ->
-                                        otherUnit.cells.containsAll(unsolvedCells)
-                                    }
+                            otherUnit.cells.containsAll(unsolvedCells)
+                        }] = otherUnits.find {otherUnit ->
+                            otherUnit.cells.containsAll(unsolvedCells)
+                        }
                         cell.remove number
                         if (cell.values.size() == 1) {
                             report = cell.report

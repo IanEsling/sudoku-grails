@@ -15,7 +15,7 @@
         }
 
         function showNotes(event) {
-            $("table.hide_notes").each(function() {
+            $("table.hide_notes").each(function () {
                 $(this).attr('class', 'visible_notes');
             });
             if ($("#hideNotes") != null) {
@@ -28,7 +28,7 @@
         }
 
         function hideNotes(event) {
-            $("table.visible_notes").each(function() {
+            $("table.visible_notes").each(function () {
                 $(this).attr('class', 'hide_notes');
             });
             if ($("#showNotes") != null) {
@@ -64,7 +64,7 @@
             }
             var html = $('#' + cell).html();
             $('#' + cell).html(number);
-            $('#' + cell).bind('click', function() {
+            $('#' + cell).bind('click', function () {
                 $(this).html(html);
             });
         }
@@ -86,10 +86,17 @@
             document.location.href = "${g.createLink(url: "/board/")}" + board;
         }
 
-        //        document.observe("dom:loaded", function() {
-        //                    hideNotes();
-        //                }
-        //        )
+        function reportHighlight(cells) {
+            for (i = 0; i < cells.length; i++) {
+                $('#' + cells[i]).attr('style', 'background-color:#ff8d1f;')
+            }
+        }
+
+        function removeReportHighlight(cells) {
+            for (i = 0; i < cells.length; i++) {
+                $('#' + cells[i]).removeAttr('style')
+            }
+        }
     </script>
 </head>
 
