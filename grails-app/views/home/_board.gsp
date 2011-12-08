@@ -34,9 +34,7 @@
                                         <div id="${cell.row}_${cell.column}">
                                             <p style="font-weight: bold;">Notes for ${cell.toString()} ${cell.values} :</p>
                                             <ul>
-                                                <g:each in="${cell.report}" var="line">
-                                                    <li>${line}</li>
-                                                </g:each>
+                                                <g:render template="report" collection="${cell.report}" var="report"/>
                                             </ul>
                                         </div>
                                     </div>
@@ -97,18 +95,7 @@
                     <li>${report}</li>
                 </g:if>
                 <g:else>
-                    <g:each in="${report}" var="line">
-                        <li onmouseout="removeReportHighlight([
-                            <g:each in="${line.value}" var="cell" status="status">
-                            ${cell.pageId}<g:if test="${status < (line.value.size())}">, </g:if>
-                            </g:each>
-                        ])"
-                            onmouseover="reportHighlight([
-                                <g:each in="${line.value}" var="cell" status="status">
-                                ${cell.pageId}<g:if test="${status < (line.value.size())}">, </g:if>
-                                </g:each>
-                            ])">${line.key}</li>
-                    </g:each>
+                    <g:render template="report" collection="${report}" var="report"/>
                 </g:else>
             </ul>
         </div>
