@@ -1,12 +1,12 @@
-<g:each in="${report}" var="line">
+<g:each in="${report.reports}" var="line">
     <li onmouseout="removeReportHighlight([
-        <g:each in="${line.value}" var="cell" status="status">
+        <g:each in="${report.reportCells[line]}" var="cell" status="status">
         ${cell.pageId}<g:if test="${status < (line.value.size())}">, </g:if>
         </g:each>
     ])"
         onmouseover="reportHighlight([
-            <g:each in="${line.value}" var="cell" status="status">
+            <g:each in="${report.reportCells[line]}" var="cell" status="status">
             ${cell.pageId}<g:if test="${status < (line.value.size())}">, </g:if>
             </g:each>
-        ])">${line.key}</li>
+        ])">${line}</li>
 </g:each>

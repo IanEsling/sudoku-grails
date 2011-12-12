@@ -95,7 +95,7 @@
                     <li>${report}</li>
                 </g:if>
                 <g:else>
-                    <g:render template="report" collection="${report}" var="report"/>
+                    <g:render template="report" bean="${report}" var="report"/>
                 </g:else>
             </ul>
         </div>
