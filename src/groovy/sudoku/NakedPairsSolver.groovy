@@ -74,7 +74,7 @@ class NakedPairsSolver {
                                         "because they are both the only possible values in ${pair} " +
                                         "and ${otherPair}", Lists.newArrayList(pair, otherPair))
                                 if (cell.values.size() == 1) {
-                                    report["so it must be a ${cell.values[0]}"] = Lists.newArrayList(cell)
+                                    report.add("so it must be a ${cell.values[0]}", Lists.newArrayList(cell))
                                     solved = true
                                 }
                             }

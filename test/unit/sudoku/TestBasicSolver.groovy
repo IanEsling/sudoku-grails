@@ -79,7 +79,7 @@ import static org.junit.Assert.assertNotNull
         solver.solveForBoard(board)
         assertNotNull("no report for solver 4:\n${board.toString()}", solver.report)
         solver.solveForBoard(board)
-        assertEquals("report for solver 5\n${board.toString()}", 0, solver.report.size())
+        assertEquals("report for solver 5\n${board.toString()}", 0, solver.report.reports.size())
         println board.toString()
         println solver.report
     }
