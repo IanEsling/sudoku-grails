@@ -42,9 +42,9 @@ class UniqueToUnitSolver {
                         cell.report.add("${cell} " + cell.values +
                                 " cannot be a $number because it can only exist in $unit in " + otherUnits.find {otherUnit ->
                             otherUnit.cells.containsAll(unsolvedCells)
-                        }, otherUnits.findAll {otherUnit ->
+                        }, unit.unsolvedCells.intersect(otherUnits.find {otherUnit ->
                             otherUnit.cells.containsAll(unsolvedCells)
-                        })
+                        }.unsolvedCells))
                         cell.remove number
                         if (cell.values.size() == 1) {
                             report = cell.report
