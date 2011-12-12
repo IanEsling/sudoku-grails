@@ -4,7 +4,7 @@ import com.google.common.collect.Maps
 
 class UniqueToUnitSolver {
 
-    Map<String, Collection<Cell>> report
+    Report report
 
     boolean solveForBoard(Board board) {
         if (!solveUnits(board.rows, board.regions)) {
@@ -26,7 +26,7 @@ class UniqueToUnitSolver {
     }
 
     boolean solveUnit(Unit unit, Set<? extends Unit> otherUnits) {
-        report = Maps.newHashMap()
+        report = new Report()
         boolean solved = false
         unit.possibleNumbers().each {number ->
             def unsolvedCells = unit.unsolvedCells.findAll {cell ->
@@ -39,12 +39,12 @@ class UniqueToUnitSolver {
                     otherUnit.cells.containsAll(unsolvedCells)
                 }.unsolvedCells.each {cell ->
                     if (!solved && !unsolvedCells.contains(cell) && cell.values.contains(number)) {
-                        cell.report["${cell} " + cell.values +
+                        cell.report.add("${cell} " + cell.values +
                                 " cannot be a $number because it can only exist in $unit in " + otherUnits.find {otherUnit ->
                             otherUnit.cells.containsAll(unsolvedCells)
-                        }] = otherUnits.find {otherUnit ->
+                        }, otherUnits.findAll {otherUnit ->
                             otherUnit.cells.containsAll(unsolvedCells)
-                        }
+                        })
                         cell.remove number
                         if (cell.values.size() == 1) {
                             report = cell.report

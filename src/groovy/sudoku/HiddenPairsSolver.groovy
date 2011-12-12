@@ -44,13 +44,13 @@ class HiddenPairsSolver {
                                     }
                                 }.size() == 0) {
                                     cells.each {cell ->
-                                        cell.report["${cell} hidden pair of either " +
+                                        cell.report.add("${cell} hidden pair of either " +
                                                 "${possible} or ${otherPossible} with " +
                                                 cells.find {
                                                     it != cell
-                                                }.toString() + " in " + unit.toString()] = Lists.newArrayList(cells.find {
+                                                }.toString() + " in " + unit.toString(), Lists.newArrayList(cells.find {
                                             it != cell
-                                        })
+                                        }))
                                         cell.values.retainAll([possible, otherPossible])
                                     }
                                 }

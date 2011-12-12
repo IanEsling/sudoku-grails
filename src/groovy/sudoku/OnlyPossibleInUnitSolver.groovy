@@ -1,12 +1,9 @@
 package sudoku
 
-import com.google.common.collect.Lists
-import com.google.common.collect.Maps
-
 class OnlyPossibleInUnitSolver {
 
     BasicSolver basicSolver = new BasicSolver()
-    Map<String, Collection<Cell>> report
+    Report report
 
     boolean solveForBoard(Board board) {
         if (!basicSolver.solveForBoard(board)) {
@@ -28,7 +25,7 @@ class OnlyPossibleInUnitSolver {
     }
 
     private boolean solveUnit(Unit unit) {
-        report = Maps.newHashMap()
+        report = new Report()
         boolean solved = false
         unit.possibleNumbers().each {number ->
             if (!solved) {
@@ -46,8 +43,8 @@ class OnlyPossibleInUnitSolver {
                     cell.values.retainAll([number])
                     cell.lastOneSolved = true
                     solved = true
-                    report["${cell} is the only possible in its ${unit.type} to be $number"] = unit.unsolvedCells
-                    cell.report << report
+                    report.add("${cell} is the only possible in its ${unit.type} to be $number", unit.unsolvedCells)
+                    cell.report.add(report)
                 }
             }
         }

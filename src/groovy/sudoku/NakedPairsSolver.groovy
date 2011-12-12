@@ -1,11 +1,10 @@
 package sudoku
 
 import com.google.common.collect.Lists
-import com.google.common.collect.Maps
 
 class NakedPairsSolver {
 
-    Map<String, Collection<Cell>> report
+    Report report
     BasicSolver basicSolver = new BasicSolver()
     OnlyPossibleInUnitSolver onlyPossibleInUnitSolver = new OnlyPossibleInUnitSolver()
     HiddenPairsSolver hiddenPairsSolver = new HiddenPairsSolver()
@@ -49,7 +48,7 @@ class NakedPairsSolver {
     }
 
     boolean solveUnit(Unit unit) {
-        report = Maps.newHashMap()
+        report = new Report()
         boolean solved = false
         if (unit.unsolvedCells.inject(0) {count, cell ->
             count + (cell.values.size() == 2 ? 1 : 0)
@@ -71,9 +70,9 @@ class NakedPairsSolver {
                                 def tempValues = cell.values.clone()
                                 cell.values.removeAll(pair.values.intersect(otherPair.values))
                                 report = cell.report
-                                report["${cell} ${tempValues} cannot be a ${pair.values[0]} or a ${pair.values[1]} " +
-                                         "because they are both the only possible values in ${pair} " +
-                                         "and ${otherPair}"] = Lists.newArrayList(pair, otherPair)
+                                report.add("${cell} ${tempValues} cannot be a ${pair.values[0]} or a ${pair.values[1]} " +
+                                        "because they are both the only possible values in ${pair} " +
+                                        "and ${otherPair}", Lists.newArrayList(pair, otherPair))
                                 if (cell.values.size() == 1) {
                                     report["so it must be a ${cell.values[0]}"] = Lists.newArrayList(cell)
                                     solved = true
