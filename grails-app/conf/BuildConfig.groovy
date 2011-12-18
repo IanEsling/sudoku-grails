@@ -29,6 +29,6 @@ grails.project.dependency.resolution = {
         // runtime 'mysql:mysql-connector-java:5.1.13'
     }
     plugins {
-        compile ':heroku:1.0'
+        compile ':heroku:1.0' ':cloud-support:1.0.8'
     }
 }
